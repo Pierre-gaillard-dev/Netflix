@@ -10,7 +10,24 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Films.hasMany(models.Rating_Films, {
+        foreignKey: 'film_id',
+        as: 'ratings'
+      })
+
+      Films.belongsToMany(models.Genres, {
+        through: 'Rel_FilmGenres',
+        foreignKey: 'film_id',
+        otherKey: 'genre_id',
+        as: 'genres'
+      })
+
+      Films.belongsToMany(models.Actors, {
+        through: 'Rel_ActorFilm',
+        foreignKey: 'film_id',
+        otherKey: 'actor_id',
+        as: 'actors'
+      })
     }
   }
   Films.init({
