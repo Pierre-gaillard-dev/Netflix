@@ -4,20 +4,21 @@ import { Rel_ActorFilmAttributes } from "../types/express"
 
 interface Rel_ActorFilmCreationAttributes extends Rel_ActorFilmAttributes {}
 
-module.exports = (sequelize: Sequelize) => {
-	class Rel_ActorFilm
-		extends Model<Rel_ActorFilmAttributes, Rel_ActorFilmCreationAttributes>
-		implements Rel_ActorFilmAttributes
-	{
-		public id!: number
-		public actor_id!: number
-		public film_id!: number
-		public readonly createdAt?: Date
-		public readonly updatedAt?: Date
-		static associate(models: any) {
-			// define association here
-		}
+class Rel_ActorFilm
+	extends Model<Rel_ActorFilmAttributes, Rel_ActorFilmCreationAttributes>
+	implements Rel_ActorFilmAttributes
+{
+	public id!: number
+	public actor_id!: number
+	public film_id!: number
+	public readonly createdAt?: Date
+	public readonly updatedAt?: Date
+	static associate(models: any) {
+		// define association here
 	}
+}
+
+export default (sequelize: Sequelize) => {
 	Rel_ActorFilm.init(
 		{
 			id: {
@@ -37,6 +38,7 @@ module.exports = (sequelize: Sequelize) => {
 		{
 			sequelize,
 			modelName: "Rel_ActorFilm",
+			tableName: "Rel_ActorFilm",
 		}
 	)
 	return Rel_ActorFilm

@@ -18,14 +18,14 @@ export default (sequelize: Sequelize) => {
 				through: "Rel_FilmGenres",
 				foreignKey: "genre_id",
 				otherKey: "film_id",
-				as: "films",
+				as: "genre_films",
 			})
 
-			Genres.belongsToMany(models.Films, {
-				through: "Rel_FilmGenres",
+			Genres.belongsToMany(models.Series, {
+				through: "Rel_SerieGenres",
 				foreignKey: "genre_id",
 				otherKey: "film_id",
-				as: "films",
+				as: "genre_series",
 			})
 		}
 	}
@@ -52,7 +52,7 @@ export default (sequelize: Sequelize) => {
 		{
 			sequelize,
 			modelName: "Genres",
-			tableName: "genres",
+			tableName: "Genres",
 		}
 	)
 	return Genres

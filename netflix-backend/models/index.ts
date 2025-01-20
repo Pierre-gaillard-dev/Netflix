@@ -3,7 +3,7 @@ import path from "path"
 import { Sequelize, DataTypes, Model } from "sequelize"
 import process from "process"
 import { Dialect } from "sequelize/types"
-import { ExtendedModelStatic } from "../types/express"
+import { ExtendedModelStatic } from "../types/sequelize"
 
 const basename = path.basename(__filename)
 const env = process.env.NODE_ENV || "development"
@@ -56,12 +56,10 @@ fs.readdirSync(__dirname)
 			file.indexOf(".test.ts") === -1
 		)
 	})
-	.forEach((file) => {
-		const model = require(path.join(__dirname, file))(
-			sequelize,
-			DataTypes
-		) as ExtendedModelStatic<Model>
+	.forEach(async (file) => {
+		const model = require(path.join(__dirname, file)).default(sequelize)
 		db.models[model.name] = model
+		console.log("chargement du model", model.name)
 	})
 
 // Appelle la méthode `associate` sur chaque modèle s'il existe
@@ -73,3 +71,4 @@ Object.keys(db.models).forEach((modelName) => {
 })
 
 export default db
+console.log("db.models", db.models)

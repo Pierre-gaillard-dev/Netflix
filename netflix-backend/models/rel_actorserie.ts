@@ -6,7 +6,7 @@ interface Rel_ActorSeriesCreationAttributes
 	extends Optional<Rel_ActorSeriesAttributes, "id"> {}
 
 export default (sequelize: Sequelize) => {
-	class Rel_ActorSerie
+	class Rel_ActorSeries
 		extends Model<
 			Rel_ActorSeriesAttributes,
 			Rel_ActorSeriesCreationAttributes
@@ -23,7 +23,7 @@ export default (sequelize: Sequelize) => {
 			// define association here
 		}
 	}
-	Rel_ActorSerie.init(
+	Rel_ActorSeries.init(
 		{
 			id: {
 				type: DataTypes.INTEGER,
@@ -41,9 +41,9 @@ export default (sequelize: Sequelize) => {
 		},
 		{
 			sequelize,
-			modelName: "Rel_ActorSerie",
-			tableName: "rel_actorserie",
+			modelName: "Rel_ActorSeries",
+			tableName: "Rel_ActorSeries",
 		}
 	)
-	return Rel_ActorSerie
+	return Rel_ActorSeries
 }

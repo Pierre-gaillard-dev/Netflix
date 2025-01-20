@@ -38,7 +38,7 @@ export default (sequelize: Sequelize) => {
 		{
 			sequelize,
 			modelName: "Rel_FilmGenre",
-			tableName: "rel_filmgenre",
+			tableName: "Rel_FilmGenre",
 		}
 	)
 	return Rel_FilmGenre

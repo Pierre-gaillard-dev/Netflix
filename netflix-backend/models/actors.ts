@@ -19,14 +19,14 @@ export default (sequelize: Sequelize) => {
 				through: "Rel_ActorSeries",
 				foreignKey: "actor_id",
 				otherKey: "serie_id",
-				as: "series",
+				as: "actor_series",
 			})
 
 			Actors.belongsToMany(models.Films, {
 				through: "Rel_ActorFilms",
 				foreignKey: "actor_id",
 				otherKey: "film_id",
-				as: "films",
+				as: "actor_films",
 			})
 		}
 	}
@@ -53,6 +53,7 @@ export default (sequelize: Sequelize) => {
 		{
 			sequelize,
 			modelName: "Actors",
+			tableName: "Actors",
 		}
 	)
 	return Actors

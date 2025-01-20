@@ -20,21 +20,21 @@ export default (sequelize: Sequelize) => {
 		static associate(models: any) {
 			Films.hasMany(models.Rating_Films, {
 				foreignKey: "film_id",
-				as: "ratings",
+				as: "film_ratings",
 			})
 
 			Films.belongsToMany(models.Genres, {
 				through: "Rel_FilmGenres",
 				foreignKey: "film_id",
 				otherKey: "genre_id",
-				as: "genres",
+				as: "film_genres",
 			})
 
 			Films.belongsToMany(models.Actors, {
 				through: "Rel_ActorFilm",
 				foreignKey: "film_id",
 				otherKey: "actor_id",
-				as: "actors",
+				as: "film_actors",
 			})
 		}
 	}
@@ -69,7 +69,7 @@ export default (sequelize: Sequelize) => {
 		{
 			sequelize,
 			modelName: "Films",
-			tableName: "films",
+			tableName: "Films",
 		}
 	)
 	return Films

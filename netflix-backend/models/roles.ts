@@ -11,10 +11,12 @@ export default (sequelize: Sequelize) => {
 	{
 		public id!: number
 		public name!: string
+		public readonly createdAt?: Date
+		public readonly updatedAt?: Date
 		static associate(models: any) {
 			Roles.hasOne(models.Users, {
 				foreignKey: "role_id",
-				as: "user",
+				as: "users",
 			})
 		}
 	}
@@ -34,7 +36,7 @@ export default (sequelize: Sequelize) => {
 		{
 			sequelize,
 			modelName: "Roles",
-			tableName: "roles",
+			tableName: "Roles",
 		}
 	)
 	return Roles

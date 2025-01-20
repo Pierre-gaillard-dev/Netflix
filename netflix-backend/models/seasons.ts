@@ -70,7 +70,7 @@ export default (sequelize: Sequelize) => {
 		{
 			sequelize,
 			modelName: "Seasons",
-			tableName: "seasons",
+			tableName: "Seasons",
 		}
 	)
 	return Seasons

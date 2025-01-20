@@ -47,7 +47,7 @@ export default (sequelize: Sequelize) => {
 		{
 			sequelize,
 			modelName: "Rating_Episodes",
-			tableName: "rating_episodes",
+			tableName: "Rating_Episodes",
 		}
 	)
 	return Rating_Episodes

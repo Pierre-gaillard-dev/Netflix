@@ -39,7 +39,7 @@ export default (sequelize: Sequelize) => {
 		{
 			sequelize,
 			modelName: "Rel_SerieGenre",
-			tableName: "rel_seriegenre",
+			tableName: "Rel_SerieGenre",
 		}
 	)
 	return Rel_SerieGenre
