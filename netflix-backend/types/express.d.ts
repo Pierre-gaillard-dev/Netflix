@@ -142,3 +142,8 @@ export interface SeriesAttributes {
 	createdAt?: Date
 	updatedAt?: Date
 }
+
+export interface ExtendedModelStatic<TModel> extends ModelStatic<TModel> {
+	name: string
+	associate?: (models: { [key: string]: ModelStatic<Model> }) => void
+}
