@@ -1,0 +1,13 @@
+{
+	"name": "netflix",
+	"version": "1.0.0",
+	"description": "Projet ayant pour but de faire partie de mon portfolio. \r L'idée est de recréer l'interface de Netflix via un ou plusieurs framework (à définir selon les nécessités).\r Il faudrait à la fois du développement back-end et front-end.",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"serve": "npm --prefix netflix-backend start"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
+}
