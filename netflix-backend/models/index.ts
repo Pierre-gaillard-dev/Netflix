@@ -71,4 +71,3 @@ Object.keys(db.models).forEach((modelName) => {
 })
 
 export default db
-console.log("db.models", db.models)

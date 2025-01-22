@@ -72,7 +72,7 @@ export default (sequelize: Sequelize) => {
 			sequelize,
 			modelName: "Episodes",
 			tableName: "Episodes",
-			timestamps: false,
+			timestamps: true,
 		}
 	)
 	return Episodes
