@@ -5,8 +5,8 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"serve": "npm --prefix netflix-backend start && npm --prefix netflix-frontend start",
-		"dev": "concurrently \"npm --prefix netflix-backend start\" \"npm --prefix netflix-frontend dev\""
+		"serve": "npm --prefix netflix-backend run start && npm --prefix netflix-frontend run start",
+		"dev": "concurrently \"npm --prefix netflix-backend run start\" \"npm --prefix netflix-frontend run dev\""
 	},
 	"keywords": [],
 	"author": "",
