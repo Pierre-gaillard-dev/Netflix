@@ -11,7 +11,7 @@ function App() {
 		getFilms().then((new_films) => {
 			setFilms(new_films)
 		})
-	})
+	}, [])
 
 	return (
 		<>

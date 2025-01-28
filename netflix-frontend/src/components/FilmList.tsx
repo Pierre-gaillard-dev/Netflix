@@ -1,13 +1,23 @@
 import React from "react"
-import FilmItem from "./FilmItem"
+import VideoItem from "./VideoItem"
 
 import { FilmList_type } from "../types"
 
-const FilmList: React.FC<{ films: FilmList_type }> = function ({ films = [] }) {
+import "./css/FilmList.css"
+
+const FilmList: React.FC<{ films: FilmList_type; showDetails?: boolean }> = ({
+	films = [],
+	showDetails,
+}) => {
 	return (
-		<div className="FilmList">
+		<div className="filmList">
 			{films.map((film) => (
-				<FilmItem key={film.id} {...film} />
+				<VideoItem
+					key={film.id}
+					film={film}
+					type={"film"}
+					showDetails={showDetails}
+				/>
 			))}
 		</div>
 	)
