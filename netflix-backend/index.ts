@@ -34,8 +34,8 @@ sequelize.sync({ force: true }).then(() => {
 
 /* Middlewares */
 app.use(express.json())
-app.use("/api", routes)
 app.use(cors(CorsOptions))
+app.use("/api", routes)
 
 db.sequelize
 	.authenticate()
