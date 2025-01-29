@@ -53,6 +53,8 @@ export interface FilmAttributes {
 	releaseDate: Date
 	createdAt?: Date
 	updatedAt?: Date
+	genres?: GenreAttributes[]
+	actors?: ActorAttributes[]
 }
 
 export interface GenreAttributes {
@@ -62,6 +64,7 @@ export interface GenreAttributes {
 	description: string
 	createdAt?: Date
 	updatedAt?: Date
+	films?: FilmAttributes[]
 }
 
 export interface Rating_EpisodesAttributes {

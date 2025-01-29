@@ -2,7 +2,7 @@
 import { QueryInterface, DataTypes } from "sequelize"
 module.exports = {
 	async up(queryInterface: QueryInterface) {
-		await queryInterface.createTable("Rel_FilmGenres", {
+		await queryInterface.createTable("Rel_FilmGenre", {
 			id: {
 				allowNull: false,
 				autoIncrement: true,
@@ -34,6 +34,6 @@ module.exports = {
 		})
 	},
 	async down(queryInterface: QueryInterface) {
-		await queryInterface.dropTable("Rel_FilmGenres")
+		await queryInterface.dropTable("Rel_FilmGenre")
 	},
 }

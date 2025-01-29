@@ -1,4 +1,5 @@
 import { Request, Response } from "express"
+import { GenreAttributes } from "../types/express"
 import db from "../models"
 const Genres = db.models.Genres
 
@@ -23,6 +24,21 @@ const genreController = {
 		} catch (error) {
 			console.error(error)
 			res.status(500).json({ message: "Error fetching genre" })
+		}
+	},
+	getGenreFilms: async (req: Request, res: Response) => {
+		try {
+			const genre = (await Genres.findByPk(req.params.id, {
+				include: ["films"],
+			})) as unknown as GenreAttributes
+			if (genre) {
+				res.status(200).json(genre.films)
+			} else {
+				res.status(404).json({ message: "Genre not found" })
+			}
+		} catch (error) {
+			console.error(error)
+			res.status(500).json({ message: "Error fetching genre films" })
 		}
 	},
 	CreateGenre: async (req: Request, res: Response) => {

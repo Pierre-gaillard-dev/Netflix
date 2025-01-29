@@ -1,6 +1,7 @@
 "use strict"
 import { Model, Sequelize, DataTypes, Optional } from "sequelize"
 import { FilmAttributes } from "../types/express"
+import { GenreAttributes, ActorAttributes } from "../types/express"
 
 interface FilmCreationAttributes extends Optional<FilmAttributes, "id"> {}
 
@@ -17,6 +18,10 @@ export default (sequelize: Sequelize) => {
 		public releaseDate!: Date
 		public readonly createdAt?: Date
 		public readonly updatedAt?: Date
+
+		public genres?: GenreAttributes[]
+		public actors?: ActorAttributes[]
+
 		static associate(models: any) {
 			Films.hasMany(models.Rating_Films, {
 				foreignKey: "film_id",
@@ -24,17 +29,17 @@ export default (sequelize: Sequelize) => {
 			})
 
 			Films.belongsToMany(models.Genres, {
-				through: "Rel_FilmGenres",
+				through: "Rel_FilmGenre",
 				foreignKey: "film_id",
 				otherKey: "genre_id",
-				as: "film_genres",
+				as: "genres",
 			})
 
 			Films.belongsToMany(models.Actors, {
 				through: "Rel_ActorFilm",
 				foreignKey: "film_id",
 				otherKey: "actor_id",
-				as: "film_actors",
+				as: "actors",
 			})
 		}
 	}
@@ -48,6 +53,7 @@ export default (sequelize: Sequelize) => {
 			name: {
 				type: DataTypes.STRING,
 				allowNull: false,
+				unique: true,
 			},
 			image: {
 				type: DataTypes.STRING,
