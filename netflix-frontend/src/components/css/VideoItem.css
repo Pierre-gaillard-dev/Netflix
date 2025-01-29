@@ -7,10 +7,13 @@
 	width: auto;
 	border: 2px solid transparent;
 	overflow: hidden;
+	flex-shrink: 0;
+	cursor: pointer;
 }
 
 .videoItem.selected {
 	border-color: var(--netflix-red);
+	transition: all 0.1s ease-in-out;
 }
 
 .videoItem .image_container {
@@ -32,9 +35,33 @@
 
 .videoItem .duration {
 	position: absolute;
-	bottom: 0;
+	top: 0;
 	right: 0;
 	color: var(--netflix-white);
 	margin: 0.5rem;
 	font-size: 10px;
+}
+
+.videoItem .videoName {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	overflow: hidden;
+	color: var(--netflix-white);
+	font-size: 10px;
+	background: linear-gradient(
+		to top,
+		rgba(0, 0, 0, 1),
+		rgba(0, 0, 0, 0.7) 70%,
+		rgba(0, 0, 0, 0)
+	);
+	padding: 0.5rem;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	transition: all 0.1s ease-in-out;
+}
+
+.videoItem:not(.selected) .videoName {
+	bottom: -40px;
 }

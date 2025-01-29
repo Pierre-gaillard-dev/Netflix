@@ -10,20 +10,25 @@ const VideoItem: React.FC<{
 	showDetails?: boolean
 }> = ({ film, type, showDetails = false }) => {
 	const [isValidImage, setIsValidImage] = useState<boolean>(false)
+	const [selected, setSelected] = useState<boolean>(false)
 
 	useEffect(() => {
 		testImage(film.image).then((isValid) => setIsValidImage(isValid))
 	}, [])
 
 	return (
-		<div className="videoItem">
+		<div
+			className={"videoItem" + (selected ? " selected" : "")}
+			onMouseEnter={() => setSelected(true)}
+			onMouseLeave={() => setSelected(false)}
+		>
 			<div className="image_container">
 				{isValidImage ? (
 					<img src={film.image} alt="Image" />
 				) : (
 					<p>Image not found</p>
 				)}
-				<p></p>
+				{!showDetails && <p className="videoName">{film.name}</p>}
 				<p className="duration">{film.duration}</p>
 			</div>
 			{showDetails && (
