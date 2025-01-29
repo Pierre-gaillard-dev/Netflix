@@ -1,5 +1,4 @@
-import React, { useEffect } from "react"
-import { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Film_type } from "../types"
 import testImage from "../utils/testImage"
 
@@ -10,7 +9,7 @@ const VideoItem: React.FC<{
 	type: "film" | "series" | "episode"
 	showDetails?: boolean
 }> = ({ film, type, showDetails = false }) => {
-	const [isValidImage, setIsValidImage] = React.useState<boolean>(false)
+	const [isValidImage, setIsValidImage] = useState<boolean>(false)
 
 	useEffect(() => {
 		testImage(film.image).then((isValid) => setIsValidImage(isValid))
