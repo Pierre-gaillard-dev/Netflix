@@ -29,7 +29,9 @@ const VideoItem: React.FC<{
 					<p>Image not found</p>
 				)}
 				{!showDetails && <p className="videoName">{film.name}</p>}
-				<p className="duration">{film.duration}</p>
+				<p className="duration">{`${Math.floor(film.duration / 60)}h ${
+					film.duration % 60
+				}min`}</p>
 			</div>
 			{showDetails && (
 				<>
