@@ -1,33 +1,30 @@
-import { useState, useEffect } from "react"
-import "./App.css"
+import { useEffect, useState } from "react"
 import FilmList from "./components/FilmList"
+import { getAllGenres } from "./api/genres"
 
-import { FilmList_type } from "./types"
+import { Genre_type } from "./types"
+
+import "./App.css"
 
 function App() {
-	const [films, setFilms] = useState<FilmList_type>([])
+	const [genres, setGenres] = useState<Genre_type[]>([])
 
 	useEffect(() => {
-		getFilms().then((new_films) => {
-			setFilms(new_films)
-		})
+		getAllGenres().then((genres) => setGenres(genres))
 	}, [])
 
 	return (
 		<>
-			<h1>App</h1>
-			<div>
-				<h2>films</h2>
-				<FilmList films={films} />
-			</div>
+			<FilmList title="Tous les films du moment" />
+			{genres.map((genre) => (
+				<FilmList
+					key={genre.id}
+					genreId={genre.id}
+					title={genre.name}
+				/>
+			))}
 		</>
 	)
-}
-
-const getFilms: () => Promise<FilmList_type> = function () {
-	return fetch("http://localhost:3000/api/films").then((res) => {
-		return res.json()
-	})
 }
 
 export default App
