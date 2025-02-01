@@ -8,7 +8,11 @@ const rel_film_genre = db.models.Rel_FilmGenre
 const filmController = {
 	async getAllFilms(req: Request, res: Response): Promise<void> {
 		try {
-			const films = await Film.findAll({ include: ["genres"] })
+			const max = req.query.max ? parseInt(req.query.max as string) : 50
+			const films = await Film.findAll({
+				include: ["genres"],
+				limit: max,
+			})
 			res.status(200).json(films)
 		} catch (error) {
 			console.error(error)
