@@ -28,8 +28,10 @@ const genreController = {
 	},
 	getGenreFilms: async (req: Request, res: Response) => {
 		try {
+			const max = req.query.max ? parseInt(req.query.max as string) : 50
 			const genre = (await Genres.findByPk(req.params.id, {
 				include: ["films"],
+				limit: max,
 			})) as unknown as GenreAttributes
 			if (genre) {
 				res.status(200).json(genre.films)
