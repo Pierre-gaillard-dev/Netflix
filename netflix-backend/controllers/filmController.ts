@@ -9,7 +9,6 @@ const filmController = {
 	async getAllFilms(req: Request, res: Response): Promise<void> {
 		try {
 			const max = req.query.max ? parseInt(req.query.max as string) : 50
-			console.log("max : ", max, req.query)
 			const films = await Film.findAll({
 				include: ["genres"],
 				limit: max,

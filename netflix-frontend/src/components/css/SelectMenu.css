@@ -1,0 +1,56 @@
+.selectMenu {
+	position: relative;
+	width: fit-content;
+}
+
+.selectMenu h3 {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	cursor: pointer;
+	border: 1px solid var(--netflix-white);
+	width: fit-content;
+	padding: 3px 10px;
+}
+
+.selectMenu h3 span {
+	display: flex;
+	align-items: center;
+	transition: all 0.3s ease-in-out;
+}
+
+.selectMenu > div {
+	display: none;
+}
+
+.selectMenu.open > div {
+	display: block;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 100;
+	max-width: unset;
+}
+
+.selectMenu.open h3 span {
+	transform: rotate(-180deg);
+}
+
+.selectMenu .selectBox {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	background-color: var(--netflix-black);
+	color: var(--netflix-white);
+	border: 1px solid var(--netflix-gray);
+	padding: 10px;
+	gap: 3px 15px;
+}
+
+.selectMenu .selectBox div {
+	white-space: nowrap;
+}
+
+.selectMenu .selectBox div:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}

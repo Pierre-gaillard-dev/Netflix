@@ -11,7 +11,8 @@ const FilmList: React.FC<{
 	genreId?: number
 	title?: string
 	max?: number
-}> = ({ showDetails, genreId, title, max }) => {
+	wrap?: boolean
+}> = ({ showDetails, genreId, title, max, wrap }) => {
 	const [films, setFilms] = React.useState<FilmList_type>([])
 	const maxFilms = max ? max : 50
 
@@ -25,7 +26,7 @@ const FilmList: React.FC<{
 	return (
 		<div className="filmListContainer">
 			{title && <h2>{title}</h2>}
-			<div className="filmList">
+			<div className={"filmList" + (wrap ? " wrap" : "")}>
 				{films.map((film) => (
 					<VideoItem
 						key={film.id}
