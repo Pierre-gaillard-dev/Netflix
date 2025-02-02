@@ -2,6 +2,7 @@ import React from "react"
 import { Bell, Search } from "./Icons"
 
 import "./css/Header.css"
+import { Link } from "react-router-dom"
 
 const Header: React.FC = () => {
 	return (
@@ -14,9 +15,9 @@ const Header: React.FC = () => {
 					/>
 				</div>
 				<div className="links">
-					<a href="#">Accueil</a>
+					<Link to="/">Accueil</Link>
 					<a href="#">Séries</a>
-					<a href="#">Films</a>
+					<Link to="/films">Films</Link>
 					<a href="#">Nouveautés les plus regardées</a>
 					<a href="#">Ma liste</a>
 					<a href="#">Explorer par langue</a>

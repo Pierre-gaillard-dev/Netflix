@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react"
-import FilmList from "./components/FilmList"
-import { getAllGenres } from "./api/genres"
+import FilmList from "../components/FilmList"
+import { getAllGenres } from "../api/genres"
 
-import { Genre_type } from "./types"
-
-import "./App.css"
+import { Genre_type } from "../types"
 
 function App() {
 	const [genres, setGenres] = useState<Genre_type[]>([])

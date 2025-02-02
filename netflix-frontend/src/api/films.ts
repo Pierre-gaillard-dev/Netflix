@@ -1,8 +1,10 @@
 import apiClient from "./apiClient"
 
-export const getAllFilms = async () => {
+export const getAllFilms = async (max?: number) => {
 	try {
-		const response = await apiClient.get("/films")
+		const response = await apiClient.get(
+			`/films${max ? `?max=${max}` : ""}`
+		)
 		console.log(response.data.length)
 		return response.data
 	} catch (error) {
@@ -31,9 +33,11 @@ export const getFilmGenres = async (id: number) => {
 	}
 }
 
-export const getFilmByGenre = async (genreId: number) => {
+export const getFilmByGenre = async (genreId: number, max?: number) => {
 	try {
-		const response = await apiClient.get(`/genres/${genreId}/films`)
+		const response = await apiClient.get(
+			`/genres/${genreId}/films${max ? `?max=${max}` : ""}`
+		)
 		return response.data
 	} catch (error) {
 		console.error("Error fetching films by genre:", error)

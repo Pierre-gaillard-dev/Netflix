@@ -10,14 +10,16 @@ const FilmList: React.FC<{
 	showDetails?: boolean
 	genreId?: number
 	title?: string
-}> = ({ showDetails, genreId, title }) => {
+	max?: number
+}> = ({ showDetails, genreId, title, max }) => {
 	const [films, setFilms] = React.useState<FilmList_type>([])
+	const maxFilms = max ? max : 50
 
 	React.useEffect(() => {
 		if (genreId) {
-			getFilmByGenre(genreId).then((films) => setFilms(films))
+			getFilmByGenre(genreId, maxFilms).then((films) => setFilms(films))
 		} else {
-			getAllFilms().then((films) => setFilms(films))
+			getAllFilms(maxFilms).then((films) => setFilms(films))
 		}
 	}, [genreId])
 	return (
