@@ -3,6 +3,7 @@ import { Film_type } from "../types"
 import testImage from "../utils/testImage"
 
 import "./css/VideoItem.css"
+import { Link } from "react-router-dom"
 
 const VideoItem: React.FC<{
 	film: Film_type | any
@@ -11,13 +12,15 @@ const VideoItem: React.FC<{
 }> = ({ film, type, showDetails = false }) => {
 	const [isValidImage, setIsValidImage] = useState<boolean>(false)
 	const [selected, setSelected] = useState<boolean>(false)
+	const link = getLink(type, film.id)
 
 	useEffect(() => {
 		testImage(film.image).then((isValid) => setIsValidImage(isValid))
 	}, [])
 
 	return (
-		<div
+		<Link
+			to={link}
 			className={"videoItem" + (selected ? " selected" : "")}
 			onMouseEnter={() => setSelected(true)}
 			onMouseLeave={() => setSelected(false)}
@@ -39,8 +42,17 @@ const VideoItem: React.FC<{
 					<p>{film.description}</p>
 				</>
 			)}
-		</div>
+		</Link>
 	)
+}
+
+const getLink = (type: string, id: number) => {
+	switch (type) {
+		case "film":
+			return `/films/${id}`
+		default:
+			return ""
+	}
 }
 
 export default VideoItem

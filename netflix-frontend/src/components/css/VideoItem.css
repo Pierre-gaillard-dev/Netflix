@@ -11,6 +11,10 @@
 	cursor: pointer;
 }
 
+.videoItem:hover {
+	text-decoration: none;
+}
+
 .videoItem.selected {
 	border-color: var(--netflix-red);
 	transition: all 0.1s ease-in-out;
