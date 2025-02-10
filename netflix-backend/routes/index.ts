@@ -1,5 +1,6 @@
 import { Router } from "express"
 import userRoutes from "./UserRoutes"
+import authRoutes from "./authRoutes"
 import roleRoutes from "./roleRoutes"
 import filmRoutes from "./filmRoutes"
 import seriesRoutes from "./serieRoutes"
@@ -10,6 +11,7 @@ import genreRoutes from "./genreRoutes"
 const router: Router = Router({ mergeParams: true })
 
 router.use("/users", userRoutes)
+router.use("/auth", authRoutes)
 router.use("/roles", roleRoutes)
 router.use("/films", filmRoutes)
 router.use("/series", seriesRoutes)

@@ -1,5 +1,6 @@
 "use strict"
 import { Model, DataTypes, Sequelize, Optional } from "sequelize"
+import bcrypt from "bcrypt"
 import { UserAttributes } from "../types/express"
 
 interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}
@@ -17,6 +18,10 @@ export default (sequelize: Sequelize) => {
 		public role_id!: number
 		public readonly createdAt?: Date
 		public readonly updatedAt?: Date
+
+		public async checkPassword(password: string): Promise<boolean> {
+			return await bcrypt.compare(password, this.password)
+		}
 
 		static associate(models: any) {
 			Users.belongsTo(models.Roles, {
@@ -62,6 +67,7 @@ export default (sequelize: Sequelize) => {
 			email: {
 				type: DataTypes.STRING,
 				allowNull: false,
+				unique: true,
 			},
 			password: {
 				type: DataTypes.STRING,
@@ -83,5 +89,10 @@ export default (sequelize: Sequelize) => {
 			timestamps: true,
 		}
 	)
+
+	Users.beforeCreate(async (user) => {
+		user.password = await bcrypt.hash(user.password, 10)
+	})
+
 	return Users
 }

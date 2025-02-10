@@ -25,15 +25,6 @@ const userController = {
 			res.status(500).json({ message: "Error fetching user" })
 		}
 	},
-	async CreateUser(req: Request, res: Response): Promise<void> {
-		try {
-			const user = await User.create(req.body)
-			res.status(201).json(user)
-		} catch (error) {
-			console.error(error)
-			res.status(500).json({ message: "Error creating user" })
-		}
-	},
 	async UpdateUser(req: Request, res: Response): Promise<void> {
 		try {
 			const user = await User.findByPk(req.params.id)
