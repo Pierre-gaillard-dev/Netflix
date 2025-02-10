@@ -7,6 +7,7 @@ const authMiddleware = (
 	next: NextFunction
 ): void => {
 	// takes the auth token stored in the cookies
+	console.log(req.cookies)
 	const token = req.cookies?.token || req.header("authorization")
 	if (!token) {
 		res.status(401).json({
@@ -26,6 +27,7 @@ const authMiddleware = (
 			return
 		}
 		req.user = { id: decoded.id, username: decoded.username }
+		console.log(decoded, req.user)
 		next()
 	} catch (error) {
 		res.status(403).json({ message: "Invalid token" })

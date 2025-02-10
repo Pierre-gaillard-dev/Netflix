@@ -4,6 +4,7 @@ import db from "./models"
 import routes from "./routes"
 import sequelize from "./config/sequelize"
 import cors from "cors"
+import cookieParser from "cookie-parser"
 
 dotenv.config()
 
@@ -35,6 +36,7 @@ sequelize.sync({ force: true }).then(() => {
 /* Middlewares */
 app.use(express.json())
 app.use(cors(CorsOptions))
+app.use(cookieParser())
 app.use("/api", routes)
 
 db.sequelize

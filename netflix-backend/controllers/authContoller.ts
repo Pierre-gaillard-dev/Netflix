@@ -2,6 +2,7 @@ import { Request, Response } from "express"
 import Jwt from "jsonwebtoken"
 import dotenv from "dotenv"
 import db from "../models"
+import { get } from "http"
 const User = db.models.Users as any
 
 dotenv.config()
@@ -36,8 +37,8 @@ const authController = {
 			const token = generateToken(newUser)
 			res.cookie("token", token, {
 				httpOnly: true,
-				secure: true,
-				sameSite: "strict",
+				secure: process.env.NODE_ENV === "production",
+				sameSite: "lax",
 			})
 			res.status(201).json({
 				message: "User registered successfully",
@@ -53,14 +54,17 @@ const authController = {
 		try {
 			const { email, password } = req.body
 			if (!email || !password) {
+				console.log(email, password, req.body)
 				res.status(400).json({
 					message: "Email and password are required",
 				})
+				return
 			}
 
 			const user = await User.findOne({ where: { email } })
 			if (!user || !(await user.checkPassword(password))) {
 				res.status(404).json({ message: "invalid email or password" })
+				return
 			}
 
 			const token = generateToken(user)
@@ -73,6 +77,7 @@ const authController = {
 
 			res.status(200).json({
 				message: "User logged in successfully",
+				user,
 			})
 		} catch (error) {
 			console.error(error)
@@ -88,6 +93,14 @@ const authController = {
 			console.error(error)
 			res.status(500).json({ message: "Error logging out user" })
 		}
+	},
+
+	async getMe(req: Request, res: Response): Promise<void> {
+		if (!req.user) {
+			res.status(401).json({ message: "Unauthorized" })
+			return
+		}
+		res.json(req.user)
 	},
 }
 
