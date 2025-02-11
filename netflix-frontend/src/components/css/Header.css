@@ -56,3 +56,27 @@ header.header .links a {
 header.header .links a:hover {
 	text-decoration: underline;
 }
+
+header.header .profile a {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 5px;
+	cursor: pointer;
+	position: relative;
+}
+header.header .profile .popup {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	background-color: var(--netflix-black);
+	color: var(--netflix-white);
+	padding: 10px;
+	border: 1px solid var(--netflix-white);
+	z-index: 1;
+	height: 100%;
+	width: 100%;
+	cursor: unset;
+}
