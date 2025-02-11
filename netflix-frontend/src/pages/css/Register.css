@@ -1,0 +1,57 @@
+#register {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	height: calc(100vh - 80px);
+	padding-bottom: 20%;
+
+	form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 20px;
+		width: 300px;
+	}
+
+	form > * {
+		width: 100%;
+	}
+
+	button {
+		font-size: 20px;
+		padding: 5px;
+		background-color: var(--netflix-red);
+		border: none;
+		border-radius: 5px;
+		color: var(--netflix-white);
+		cursor: pointer;
+
+		transition: all 0.1s ease-in-out;
+	}
+
+	button:hover {
+		background-color: var(--netflix-red-dark);
+	}
+
+	.disclaimer {
+		background-color: var(--netflix-gray);
+		padding: 10px;
+		border-radius: 5px;
+	}
+
+	.disclaimer > * {
+		color: var(--netflix-white);
+		text-align: center;
+	}
+
+	.disclaimer p {
+		font-size: 14px;
+	}
+
+	.disclaimer p.bold {
+		font-size: 16px;
+	}
+}

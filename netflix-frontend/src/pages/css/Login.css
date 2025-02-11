@@ -1,0 +1,38 @@
+#login {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	height: calc(100vh - 80px);
+	padding-bottom: 20%;
+
+	form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 20px;
+		width: 300px;
+	}
+
+	form > * {
+		width: 100%;
+	}
+
+	button {
+		font-size: 20px;
+		padding: 5px;
+		background-color: var(--netflix-red);
+		border: none;
+		border-radius: 5px;
+		color: var(--netflix-white);
+		cursor: pointer;
+
+		transition: all 0.1s ease-in-out;
+	}
+
+	button:hover {
+		background-color: var(--netflix-red-dark);
+	}
+}

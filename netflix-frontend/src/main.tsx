@@ -11,6 +11,7 @@ import Home from "./pages/Home.tsx"
 import FilmDetail from "./pages/FilmDetail.tsx"
 import Films from "./pages/Films.tsx"
 import Login from "./pages/Login.tsx"
+import Register from "./pages/Register.tsx"
 //CSS
 import "./index.css"
 
@@ -25,6 +26,7 @@ createRoot(document.getElementById("root")!).render(
 					<Route path="/films/:id" element={<FilmDetail />} />
 					<Route path="*" element={<h1>Page not found</h1>} />
 					<Route path="/login" element={<Login />} />
+					<Route path="/register" element={<Register />} />
 				</Routes>
 			</Router>
 		</AuthProvider>

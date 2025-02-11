@@ -2,7 +2,7 @@
 	--netflix-black: #000000;
 	--netflix-white: #ffffff;
 	--netflix-red: #e50914;
-	--netflix-red-dark: #831010;
+	--netflix-red-dark: #b20710;
 	--netflix-gray: #564d4d;
 
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -48,4 +48,12 @@ a:hover {
 h1 {
 	font-size: 3.2em;
 	line-height: 1.1;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.underline {
+	text-decoration: underline;
 }

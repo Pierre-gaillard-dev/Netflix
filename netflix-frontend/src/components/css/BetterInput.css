@@ -1,0 +1,35 @@
+.BetterInput {
+	position: relative;
+	.label {
+		position: absolute;
+		left: 4px;
+		top: 50%;
+		transform: translateY(-50%);
+		transition: all 0.1s ease-in-out;
+		cursor: text;
+		user-select: none;
+	}
+
+	.label.selected {
+		top: 4px;
+		transform: translateY(0);
+		cursor: auto;
+	}
+
+	input {
+		height: 100%;
+		width: 100%;
+		border: none;
+	}
+
+	input[type="password"] {
+		letter-spacing: 2px;
+	}
+
+	.inputContainer {
+		background-color: inherit;
+		border: 1px solid var(--netflix-white);
+		border-radius: 5px;
+		padding: 2px;
+	}
+}
