@@ -1,8 +1,8 @@
 import express from "express"
 import dotenv from "dotenv"
-import db from "./models"
-import routes from "./routes"
-import sequelize from "./config/sequelize"
+import db from "./src/models"
+import routes from "./src/routes"
+import sequelize from "./src/config/sequelize"
 import cors from "cors"
 import cookieParser from "cookie-parser"
 
