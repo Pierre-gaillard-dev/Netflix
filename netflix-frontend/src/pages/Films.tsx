@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react"
+import { Navigate } from "react-router-dom"
+import { useAuth } from "../context/authContext"
 // API calls
 import { getAllGenres } from "../api/genres"
 // Components
@@ -8,6 +10,11 @@ import SelectMenu from "../components/SelectMenu"
 import { Genre_type } from "../types"
 
 const Films: React.FC = () => {
+	const { user } = useAuth()
+	if (!user) {
+		return <Navigate to="/login" />
+	}
+
 	const [genres, setGenres] = useState<Genre_type[]>([])
 	const [genre, setGenre] = useState<Genre_type | null>(null)
 

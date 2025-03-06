@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const apiClient = axios.create({
-	baseURL: "http://localhost:3000/api",
+	baseURL: "https://netflix.pierre-gaillard.mds-vannes.yt/api",
 	withCredentials: true,
 	headers: {
 		"Content-Type": "application/json",

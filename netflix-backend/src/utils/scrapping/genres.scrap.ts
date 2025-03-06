@@ -27,7 +27,7 @@ const scrapGenres = async () => {
 		},
 	}
 
-	fetch(url, options)
+	await fetch(url, options)
 		.then((res) => res.json())
 		.then((json) => {
 			console.log(json.genres.length, "films")

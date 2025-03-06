@@ -29,7 +29,7 @@ const CorsOptions: cors.CorsOptions = {
 const app = express()
 const PORT = process.env.PORT || 3000
 
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ alter: true }).then(() => {
 	console.log("Database synced successfully!")
 })
 

@@ -7,7 +7,7 @@ let sequelize: Sequelize
 
 const thisConfig = config[process.env.NODE_ENV || "development"]
 
-if (config[process.env.NODE_ENV || "development"].url) {
+if (thisConfig.url) {
 	sequelize = new Sequelize(thisConfig.url, thisConfig.parameters)
 } else {
 	sequelize = new Sequelize(

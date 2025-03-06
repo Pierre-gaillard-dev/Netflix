@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "npm --prefix netflix-backend run start && npm --prefix netflix-frontend run start",
+		"start": "concurrently \"npm --prefix netflix-backend run start\" \"npm --prefix netflix-frontend run start\"",
 		"dev": "concurrently \"npm --prefix netflix-backend run dev\" \"npm --prefix netflix-frontend run dev\"",
 		"build": "npm --prefix netflix-frontend run build && npm --prefix netflix-backend run build",
 		"build:backend": "npm --prefix netflix-backend run build",

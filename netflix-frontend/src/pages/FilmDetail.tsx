@@ -1,6 +1,7 @@
 // React
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { Navigate, useParams } from "react-router-dom"
+import { useAuth } from "../context/authContext"
 // API calls
 import { getFilmById } from "../api/films"
 // Types
@@ -9,6 +10,11 @@ import { Film_type } from "../types"
 import "./css/FilmDetail.css"
 
 const FilmDetail = () => {
+	const { user } = useAuth()
+	if (!user) {
+		return <Navigate to="/login" />
+	}
+
 	const id = useParams<{ id: string }>().id
 	const [film, setFilm] = useState<Film_type | null>(null)
 

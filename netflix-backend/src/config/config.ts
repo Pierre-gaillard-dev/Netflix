@@ -13,15 +13,13 @@ export default {
 		},
 	},
 	production: {
-		url: process.env.DB_FULL_URL_PROD,
+		username: process.env.DB_USER_PROD,
+		password: process.env.DB_PASSWORD_PROD,
+		database: process.env.DB_NAME_PROD,
 		parameters: {
+			host: process.env.DB_HOST_PROD,
 			dialect: "postgres",
-			dialectOptions: {
-				ssl: {
-					require: true,
-					rejectUnauthorized: false,
-				},
-			},
+			logging: false,
 		},
 	},
 } as Record<string, any>

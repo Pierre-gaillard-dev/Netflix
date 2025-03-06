@@ -7,8 +7,13 @@ import seriesRoutes from "./serieRoutes"
 import seasonRoutes from "./seasonRoutes"
 import episodesRoutes from "./episodeRoutes"
 import genreRoutes from "./genreRoutes"
+import scrapRoutes from "./scrapRoutes"
 
 const router: Router = Router({ mergeParams: true })
+
+router.get("/", (req, res) => {
+	res.send("Welcome to Netflix API")
+})
 
 router.use("/users", userRoutes)
 router.use("/auth", authRoutes)
@@ -18,5 +23,6 @@ router.use("/series", seriesRoutes)
 router.use("/seasons", seasonRoutes)
 router.use("/episodes", episodesRoutes)
 router.use("/genres", genreRoutes)
+router.use("/scrap", scrapRoutes)
 
 export default router
