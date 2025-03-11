@@ -27,6 +27,12 @@ const authController = {
 				})
 			}
 
+			const user = await User.findOne({ where: { email } })
+			if (user) {
+				res.status(400).json({ message: "Email already registered" })
+				return
+			}
+
 			const newUser = await User.create({
 				email,
 				password,

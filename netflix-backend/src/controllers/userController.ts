@@ -53,6 +53,25 @@ const userController = {
 			res.status(500).json({ message: "Error deleting user" })
 		}
 	},
+	/**
+	 * Check if email is already registered (200) or not (404)
+	 * @param req
+	 * @param res
+	 */
+	async checkEmail(req: Request, res: Response): Promise<void> {
+		try {
+			const user = await User.findOne({
+				where: { email: req.params.email },
+			})
+			if (user) {
+				res.status(200).json({ message: "Email already registered" })
+			} else {
+				res.status(404).json({ message: "Email not found" })
+			}
+		} catch (error) {
+			res.status(500).json({ message: "Error checking email" })
+		}
+	},
 }
 
 export default userController
