@@ -120,7 +120,16 @@ const Register: React.FC = () => {
 					</>
 				)}
 				{step == 2 ? (
-					<button type="submit">Valider</button>
+					<>
+						<button type="submit">Valider</button>
+						<button
+							type="button"
+							className="back"
+							onClick={() => setStep(1)}
+						>
+							Retour
+						</button>
+					</>
 				) : (
 					<button type="button" onClick={handleNextStep}>
 						Suivant

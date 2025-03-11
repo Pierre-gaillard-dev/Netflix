@@ -54,4 +54,12 @@
 	.disclaimer p.bold {
 		font-size: 16px;
 	}
+
+	.back {
+		background-color: var(--netflix-gray);
+	}
+
+	.back.back:hover {
+		background-color: var(--netflix-gray-dark);
+	}
 }
