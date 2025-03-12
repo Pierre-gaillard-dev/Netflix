@@ -19,10 +19,10 @@ import { HistoryProvider } from "./context/historyContext.tsx"
 
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
-		<HistoryProvider>
-			<DeviceProvider>
-				<AuthProvider>
-					<Router>
+		<DeviceProvider>
+			<AuthProvider>
+				<Router>
+					<HistoryProvider>
 						<Header />
 						<Routes>
 							<Route path="/" element={<Home />} />
@@ -32,9 +32,9 @@ createRoot(document.getElementById("root")!).render(
 							<Route path="/login" element={<Login />} />
 							<Route path="/register" element={<Register />} />
 						</Routes>
-					</Router>
-				</AuthProvider>
-			</DeviceProvider>
-		</HistoryProvider>
+					</HistoryProvider>
+				</Router>
+			</AuthProvider>
+		</DeviceProvider>
 	</StrictMode>
 )

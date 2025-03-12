@@ -4,11 +4,13 @@ import { useLocation } from "react-router-dom"
 interface History {
 	history: string[]
 	addHistory: (path: string) => void
+	goBack: () => void
 }
 
 const HistoryContext = React.createContext<History>({
 	history: [],
 	addHistory: () => {},
+	goBack: () => {},
 })
 
 export const HistoryProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -29,11 +31,24 @@ export const HistoryProvider: React.FC<{ children: React.ReactNode }> = ({
 		addHistory(window.location.pathname)
 	}, [location])
 
+	const goBack = () => {
+		if (history.length > 1) {
+			setHistory((prev) => prev.slice(0, -1))
+			window.history.back()
+		}
+	}
+
 	return (
-		<HistoryContext.Provider value={{ history, addHistory }}>
+		<HistoryContext.Provider value={{ history, addHistory, goBack }}>
 			{children}
 		</HistoryContext.Provider>
 	)
 }
 
-export const useHistory = () => React.useContext(HistoryContext)
+export const useHistory = () => {
+	const context = React.useContext(HistoryContext)
+	if (!context) {
+		throw new Error("useHistory must be used within a HistoryProvider")
+	}
+	return context
+}
