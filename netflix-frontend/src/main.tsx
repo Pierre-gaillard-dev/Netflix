@@ -3,7 +3,7 @@ import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 //components
-import Header from "./components/Header.tsx"
+import NavBar from "./components/NavBar.tsx"
 // auth
 import AuthProvider from "./context/authContext.tsx"
 //pages
@@ -23,7 +23,7 @@ createRoot(document.getElementById("root")!).render(
 			<AuthProvider>
 				<Router>
 					<HistoryProvider>
-						<Header />
+						<NavBar />
 						<Routes>
 							<Route path="/" element={<Home />} />
 							<Route path="/films" element={<Films />} />

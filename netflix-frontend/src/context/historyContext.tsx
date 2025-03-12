@@ -4,12 +4,14 @@ import { useLocation } from "react-router-dom"
 interface History {
 	history: string[]
 	addHistory: (path: string) => void
+	currentPage: () => string
 	goBack: () => void
 }
 
 const HistoryContext = React.createContext<History>({
 	history: [],
 	addHistory: () => {},
+	currentPage: () => "",
 	goBack: () => {},
 })
 
@@ -31,6 +33,10 @@ export const HistoryProvider: React.FC<{ children: React.ReactNode }> = ({
 		addHistory(window.location.pathname)
 	}, [location])
 
+	const currentPage = () => {
+		return history[history.length - 1]
+	}
+
 	const goBack = () => {
 		if (history.length > 1) {
 			setHistory((prev) => prev.slice(0, -1))
@@ -39,7 +45,9 @@ export const HistoryProvider: React.FC<{ children: React.ReactNode }> = ({
 	}
 
 	return (
-		<HistoryContext.Provider value={{ history, addHistory, goBack }}>
+		<HistoryContext.Provider
+			value={{ history, addHistory, goBack, currentPage }}
+		>
 			{children}
 		</HistoryContext.Provider>
 	)
