@@ -4,6 +4,7 @@ import { useState } from "react"
 import { ArrowDown } from "./Icons"
 // CSS
 import "./css/SelectMenu.css"
+import { useDevice } from "../context/deviceContext"
 
 const SelectMenu: React.FC<{
 	title: string
@@ -19,9 +20,14 @@ const SelectMenu: React.FC<{
 	gridColumns?: number
 }> = ({ title, options, value, setValue, gridColumns }) => {
 	const [isOpen, setIsOpen] = useState(false)
+	const device = useDevice()
 	return (
 		<div
-			className={"selectMenu" + (isOpen ? " open" : "")}
+			className={
+				"selectMenu" +
+				(isOpen ? " open" : "") +
+				(device.isMobile ? " mobile" : "")
+			}
 			onClick={() => setIsOpen(!isOpen)}
 		>
 			<h3>
@@ -35,7 +41,12 @@ const SelectMenu: React.FC<{
 					className="selectBox"
 					style={{
 						gridTemplateColumns: `repeat(${
-							gridColumns ? gridColumns : 1
+							gridColumns
+								? Math.min(
+										gridColumns,
+										Math.floor(device.window.width / 120)
+								  )
+								: 1
 						}, 1fr)`,
 					}}
 				>

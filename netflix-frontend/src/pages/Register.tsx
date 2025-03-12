@@ -44,17 +44,24 @@ const Register: React.FC = () => {
 		}
 	}
 
-	const handleNextStep = () => {
+	const handleNextStep = async () => {
 		if (!mail) {
-			alert("Email is required")
+			alert("l'email est requis")
 			return
 		}
 		if (!password) {
-			alert("Password is required")
+			alert("le mot de passe est requis")
 			return
 		}
 		if (password !== confirmPassword) {
-			alert("Passwords do not match")
+			alert("Les mots de passe ne correspondent pas")
+			return
+		}
+		const res = await axios.get(
+			`http://localhost:3000/api/users/email/${mail}`
+		)
+		if (res.status === 200) {
+			alert("adresse mail déjà utilisée")
 			return
 		}
 		setNextStepPressed(true)
@@ -120,7 +127,16 @@ const Register: React.FC = () => {
 					</>
 				)}
 				{step == 2 ? (
-					<button type="submit">Valider</button>
+					<>
+						<button type="submit">Valider</button>
+						<button
+							type="button"
+							className="back"
+							onClick={() => setStep(1)}
+						>
+							Retour
+						</button>
+					</>
 				) : (
 					<button type="button" onClick={handleNextStep}>
 						Suivant

@@ -3,6 +3,10 @@
 	width: fit-content;
 }
 
+.selectMenu.mobile {
+	position: unset;
+}
+
 .selectMenu h3 {
 	display: flex;
 	align-items: center;
@@ -32,6 +36,10 @@
 	max-width: unset;
 }
 
+.mobile .selectMenu.open > div {
+	max-width: 100vw;
+}
+
 .selectMenu.open h3 span {
 	transform: rotate(-180deg);
 }
@@ -46,6 +54,10 @@
 	gap: 3px 15px;
 }
 
+.selectMenu.mobile .selectBox {
+	gap: 8px;
+}
+
 .selectMenu .selectBox div {
 	white-space: nowrap;
 }
@@ -53,4 +65,8 @@
 .selectMenu .selectBox div:hover {
 	cursor: pointer;
 	text-decoration: underline;
+}
+
+.selectMenu .option {
+	font-size: 1.5em;
 }

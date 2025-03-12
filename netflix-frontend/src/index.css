@@ -4,6 +4,7 @@
 	--netflix-red: #e50914;
 	--netflix-red-dark: #b20710;
 	--netflix-gray: #564d4d;
+	--netflix-gray-dark: #3c3c3c;
 
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 	line-height: 1.5;
@@ -32,13 +33,18 @@ body,
 	margin: 0;
 	display: block;
 	width: 100vw;
+	max-width: 100vw;
 	min-height: 100vh;
+	font-size: 12px;
+	overflow-x: hidden;
 }
 
 a {
+	font-size: 1em;
 	font-weight: 500;
 	color: var(--netflix-white);
 	text-decoration: inherit;
+	cursor: pointer;
 }
 a:hover {
 	color: var(--netflix-white);
@@ -50,10 +56,28 @@ h1 {
 	line-height: 1.1;
 }
 
+p {
+	font-size: 1.2em;
+	line-height: 1.5;
+}
+
 .bold {
 	font-weight: bold;
 }
 
 .underline {
 	text-decoration: underline;
+}
+
+.imageContainer {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+@media screen and (max-width: 1000px) {
+	#root {
+		font-size: 10px;
+	}
 }

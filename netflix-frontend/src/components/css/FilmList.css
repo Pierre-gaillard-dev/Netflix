@@ -34,3 +34,13 @@
 .filmListContainer h2 {
 	margin-bottom: 20px;
 }
+
+@media screen and (max-width: 700px) {
+	.filmListContainer {
+		margin: 20px 0px;
+	}
+
+	.filmList > * {
+		height: 100px;
+	}
+}

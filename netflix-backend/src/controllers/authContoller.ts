@@ -27,6 +27,12 @@ const authController = {
 				})
 			}
 
+			const user = await User.findOne({ where: { email } })
+			if (user) {
+				res.status(400).json({ message: "Email already registered" })
+				return
+			}
+
 			const newUser = await User.create({
 				email,
 				password,
@@ -37,8 +43,8 @@ const authController = {
 			const token = generateToken(newUser)
 			res.cookie("token", token, {
 				httpOnly: true,
-				secure: process.env.NODE_ENV === "production",
-				sameSite: "lax",
+				secure: true,
+				sameSite: "none",
 			})
 			res.status(201).json({
 				message: "User registered successfully",
@@ -72,7 +78,7 @@ const authController = {
 			res.cookie("token", token, {
 				httpOnly: true,
 				secure: true,
-				sameSite: "strict",
+				sameSite: "none",
 			})
 
 			res.status(200).json({
