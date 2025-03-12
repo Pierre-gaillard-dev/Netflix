@@ -10,9 +10,11 @@ import SelectMenu from "../components/SelectMenu"
 import { Genre_type } from "../types"
 // Css
 import "./css/Films.css"
+import { useDevice } from "../context/deviceContext"
 
 const Films: React.FC = () => {
 	const { user } = useAuth()
+	const device = useDevice()
 	if (!user) {
 		return <Navigate to="/login" />
 	}
@@ -25,7 +27,7 @@ const Films: React.FC = () => {
 	}, [])
 
 	return (
-		<div className="films-page">
+		<div className={"films-page" + (device.isMobile ? " mobile" : "")}>
 			<div className="hero">
 				<a onClick={() => setGenre(null)}>
 					<h1>Films</h1>
@@ -38,7 +40,12 @@ const Films: React.FC = () => {
 					gridColumns={4}
 				/>
 			</div>
-			<FilmList genreId={genre?.id} wrap max={300} />
+			<FilmList
+				genreId={genre?.id}
+				wrap
+				max={300}
+				showDetails={device.isMobile}
+			/>
 		</div>
 	)
 }

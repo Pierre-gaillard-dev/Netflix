@@ -44,8 +44,7 @@ const VideoItem: React.FC<{
 			</div>
 			{showDetails && (
 				<>
-					<p>{film.name}</p>
-					<p>{film.description}</p>
+					<h3>{film.name}</h3>
 				</>
 			)}
 		</Link>

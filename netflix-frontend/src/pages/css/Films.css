@@ -4,12 +4,18 @@
 		flex-direction: row;
 		align-items: center;
 		gap: 30px;
-		margin: 30px 30px;
+		padding: 30px 30px;
 		position: relative;
 	}
 
 	.hero a {
 		text-decoration: none;
 		color: var(--netflix-white);
+	}
+}
+
+.films-page.mobile {
+	.hero {
+		justify-content: space-between;
 	}
 }

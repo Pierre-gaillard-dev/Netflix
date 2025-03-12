@@ -41,7 +41,12 @@ const SelectMenu: React.FC<{
 					className="selectBox"
 					style={{
 						gridTemplateColumns: `repeat(${
-							gridColumns ? gridColumns : 1
+							gridColumns
+								? Math.min(
+										gridColumns,
+										Math.floor(device.window.width / 120)
+								  )
+								: 1
 						}, 1fr)`,
 					}}
 				>
