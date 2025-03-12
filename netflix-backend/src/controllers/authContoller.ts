@@ -43,8 +43,8 @@ const authController = {
 			const token = generateToken(newUser)
 			res.cookie("token", token, {
 				httpOnly: true,
-				secure: process.env.NODE_ENV === "production",
-				sameSite: "lax",
+				secure: process.env.NODE_ENV == "production",
+				sameSite: process.env.NODE_ENV == "production" ? "none" : "lax",
 			})
 			res.status(201).json({
 				message: "User registered successfully",
@@ -77,8 +77,8 @@ const authController = {
 
 			res.cookie("token", token, {
 				httpOnly: true,
-				secure: true,
-				sameSite: "strict",
+				secure: process.env.NODE_ENV == "production",
+				sameSite: process.env.NODE_ENV == "production" ? "none" : "lax",
 			})
 
 			res.status(200).json({

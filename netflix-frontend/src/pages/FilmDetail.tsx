@@ -27,7 +27,7 @@ const FilmDetail = () => {
 	}, [])
 
 	return (
-		<>
+		<div className="filmDetail-page">
 			<div className="hero">
 				<div className="imageContainer">
 					<a href="#" onClick={goBack} className="back">
@@ -40,7 +40,7 @@ const FilmDetail = () => {
 					<p>{film?.description}</p>
 				</div>
 			</div>
-		</>
+		</div>
 	)
 }
 

@@ -8,6 +8,8 @@ import FilmList from "../components/FilmList"
 import SelectMenu from "../components/SelectMenu"
 //types
 import { Genre_type } from "../types"
+// Css
+import "./css/Films.css"
 
 const Films: React.FC = () => {
 	const { user } = useAuth()
@@ -23,9 +25,11 @@ const Films: React.FC = () => {
 	}, [])
 
 	return (
-		<>
+		<div className="films-page">
 			<div className="hero">
-				<h1>Films</h1>
+				<a onClick={() => setGenre(null)}>
+					<h1>Films</h1>
+				</a>
 				<SelectMenu
 					title="Genre"
 					options={genres}
@@ -35,7 +39,7 @@ const Films: React.FC = () => {
 				/>
 			</div>
 			<FilmList genreId={genre?.id} wrap max={300} />
-		</>
+		</div>
 	)
 }
 

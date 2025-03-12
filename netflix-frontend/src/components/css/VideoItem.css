@@ -9,6 +9,7 @@
 	overflow: hidden;
 	flex-shrink: 0;
 	cursor: pointer;
+	aspect-ratio: 16/9;
 }
 
 .videoItem:hover {
@@ -66,6 +67,6 @@
 	transition: all 0.1s ease-in-out;
 }
 
-.videoItem:not(.selected) .videoName {
+.videoItem:not(.selected):not(.mobile) .videoName {
 	bottom: -40px;
 }

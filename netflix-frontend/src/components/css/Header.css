@@ -5,6 +5,7 @@ header.header {
 	justify-content: space-between;
 	align-items: center;
 	height: 80px;
+	max-height: 10vh;
 	padding: 0 20px;
 	background-color: var(--netflix-black);
 	color: var(--netflix-white);
@@ -50,7 +51,7 @@ header.header .links {
 header.header .links a {
 	text-decoration: none;
 	color: var(--netflix-white);
-	font-size: 10px;
+	font-size: 0.9em;
 }
 
 header.header .links a:hover {

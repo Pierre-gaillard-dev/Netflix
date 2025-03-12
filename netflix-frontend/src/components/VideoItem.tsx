@@ -4,12 +4,14 @@ import testImage from "../utils/testImage"
 
 import "./css/VideoItem.css"
 import { Link } from "react-router-dom"
+import { useDevice } from "../context/deviceContext"
 
 const VideoItem: React.FC<{
 	film: Film_type | any
 	type: "film" | "series" | "episode"
 	showDetails?: boolean
 }> = ({ film, type, showDetails = false }) => {
+	const device = useDevice()
 	const [isValidImage, setIsValidImage] = useState<boolean>(false)
 	const [selected, setSelected] = useState<boolean>(false)
 	const link = getLink(type, film.id)
@@ -21,7 +23,11 @@ const VideoItem: React.FC<{
 	return (
 		<Link
 			to={link}
-			className={"videoItem" + (selected ? " selected" : "")}
+			className={
+				"videoItem" +
+				(selected ? " selected" : "") +
+				(device.isMobile ? " mobile" : "")
+			}
 			onMouseEnter={() => setSelected(true)}
 			onMouseLeave={() => setSelected(false)}
 		>
