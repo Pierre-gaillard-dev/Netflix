@@ -1,5 +1,5 @@
 import { Router } from "express"
-import scrapController from "../controllers/scrapController"
+import scrapController from "../controllers/scrap.controller"
 
 const router: Router = Router()
 

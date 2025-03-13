@@ -1,13 +1,13 @@
 import { Router } from "express"
-import userRoutes from "./UserRoutes"
-import authRoutes from "./authRoutes"
-import roleRoutes from "./roleRoutes"
-import filmRoutes from "./filmRoutes"
+import userRoutes from "./user.routes"
+import authRoutes from "./auth.routes"
+import roleRoutes from "./role.routes"
+import filmRoutes from "./film.routes"
 import seriesRoutes from "./serie.routes"
-import seasonRoutes from "./seasonRoutes_root"
-import episodesRoutes from "./episodeRoutes_root"
-import genreRoutes from "./genreRoutes"
-import scrapRoutes from "./scrapRoutes"
+import seasonRoutes from "./root.season.routes"
+import episodesRoutes from "./root.episode.routes"
+import genreRoutes from "./genre.routes"
+import scrapRoutes from "./scrap.routes"
 
 const router: Router = Router({ mergeParams: true })
 

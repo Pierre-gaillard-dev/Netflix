@@ -3,7 +3,7 @@ import { Router } from "express"
 // middleware
 import authMiddleware from "../middlewares/authMiddleWare"
 // controller
-import seriesController from "../controllers/seriesController"
+import seriesController from "../controllers/series.controller"
 // routes
 import seasonRoutes from "./season.routes"
 

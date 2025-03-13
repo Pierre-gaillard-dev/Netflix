@@ -1,5 +1,5 @@
 import { Router } from "express"
-import episodeController from "../controllers/episodeController"
+import episodeController from "../controllers/episode.controller"
 
 const router: Router = Router({ mergeParams: true })
 

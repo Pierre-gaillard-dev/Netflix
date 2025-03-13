@@ -1,6 +1,6 @@
 import { Router } from "express"
 import authMiddleware from "../middlewares/authMiddleWare"
-import filmController from "../controllers/filmController"
+import filmController from "../controllers/film.controller"
 
 const router: Router = Router()
 
