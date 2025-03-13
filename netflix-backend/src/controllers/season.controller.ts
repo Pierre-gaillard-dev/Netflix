@@ -5,7 +5,7 @@ const Season = db.models.Seasons
 const seasonController = {
 	async getAllSeasons(req: Request, res: Response): Promise<void> {
 		try {
-			const seasons = await Season.findAll()
+			const seasons = await Season.findAll({ include: "episodes" })
 			res.status(200).json(seasons)
 		} catch (error) {
 			console.error(error)
@@ -25,6 +25,7 @@ const seasonController = {
 			}
 			const seasons = await Season.findAll({
 				where: { serie_id: serie_id },
+				include: "episodes",
 			})
 			res.status(200).json(seasons)
 		} catch (error) {
@@ -51,6 +52,7 @@ const seasonController = {
 			const seasonNumber = req.params.season_number
 			const season = await Season.findOne({
 				where: { serie_id, seasonNumber },
+				include: "episodes",
 			})
 			if (season) {
 				res.status(200).json(season)
@@ -64,7 +66,9 @@ const seasonController = {
 	},
 	async getSeasonById(req: Request, res: Response): Promise<void> {
 		try {
-			const season = await Season.findByPk(req.params.id)
+			const season = await Season.findByPk(req.params.id, {
+				include: "episodes",
+			})
 			if (season) {
 				res.status(200).json(season)
 			} else {

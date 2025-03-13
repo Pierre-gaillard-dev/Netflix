@@ -14,6 +14,7 @@ export default (sequelize: Sequelize) => {
 		public name!: string
 		public image!: string
 		public description!: string
+		public contentType!: "serie" | "film" | "both"
 
 		public readonly createdAt?: Date
 		public readonly updatedAt?: Date
@@ -53,6 +54,10 @@ export default (sequelize: Sequelize) => {
 			},
 			description: {
 				type: DataTypes.STRING,
+				allowNull: true,
+			},
+			contentType: {
+				type: DataTypes.ENUM("serie", "film", "both"),
 				allowNull: true,
 			},
 		},

@@ -62,9 +62,11 @@ export interface GenreAttributes {
 	name: string
 	image: string
 	description: string
+	contentType: "serie" | "film" | "both"
 	createdAt?: Date
 	updatedAt?: Date
 	films?: FilmAttributes[]
+	series?: SerieAttributes[]
 }
 
 export interface Rating_EpisodesAttributes {
@@ -136,7 +138,7 @@ export interface SeasonAttributes {
 	updatedAt?: Date
 }
 
-export interface SeriesAttributes {
+export interface SerieAttributes {
 	id: number
 	name: string
 	image: string
@@ -144,4 +146,7 @@ export interface SeriesAttributes {
 	releaseDate: Date
 	createdAt?: Date
 	updatedAt?: Date
+	genres?: GenreAttributes[]
+	actors?: ActorAttributes[]
+	seasons?: SeasonAttributes[]
 }
