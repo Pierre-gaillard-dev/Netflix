@@ -5,7 +5,7 @@ const Series = db.models.Series
 const seriesController = {
 	async getAllSeries(req: Request, res: Response): Promise<void> {
 		try {
-			const series = await Series.findAll()
+			const series = await Series.findAll({ include: "seasons" })
 			res.status(200).json(series)
 		} catch (error) {
 			console.error(error)
@@ -14,7 +14,9 @@ const seriesController = {
 	},
 	async getSeriesById(req: Request, res: Response): Promise<void> {
 		try {
-			const series = await Series.findByPk(req.params.id)
+			const series = await Series.findByPk(req.params.id, {
+				include: "seasons",
+			})
 			if (series) {
 				res.status(200).json(series)
 			} else {

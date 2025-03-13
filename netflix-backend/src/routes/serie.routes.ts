@@ -1,7 +1,11 @@
+// express
 import { Router } from "express"
+// middleware
 import authMiddleware from "../middlewares/authMiddleWare"
+// controller
 import seriesController from "../controllers/seriesController"
-import seasonController from "../controllers/seasonController"
+// routes
+import seasonRoutes from "./season.routes"
 
 const router: Router = Router()
 
@@ -11,7 +15,6 @@ router.post("/", authMiddleware, seriesController.createSeries)
 router.put("/:id", authMiddleware, seriesController.updateSeries)
 router.delete("/:id", authMiddleware, seriesController.deleteSeries)
 
-router.get("/:id/seasons", authMiddleware, seasonController.getSeasonsBySerieId)
-router.post("/:id/seasons", authMiddleware, seasonController.createSeason)
+router.use("/:serie_id/seasons", seasonRoutes)
 
 export default router
