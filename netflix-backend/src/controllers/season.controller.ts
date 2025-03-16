@@ -26,6 +26,10 @@ const seasonController = {
 			const seasons = await Season.findAll({
 				where: { serie_id: serie_id },
 				include: "episodes",
+				order: [
+					["seasonNumber", "ASC"],
+					["episodes", "episodeNumber", "ASC"],
+				],
 			})
 			res.status(200).json(seasons)
 		} catch (error) {
@@ -53,6 +57,7 @@ const seasonController = {
 			const season = await Season.findOne({
 				where: { serie_id, seasonNumber },
 				include: "episodes",
+				order: [["episodes", "episodeNumber", "ASC"]],
 			})
 			if (season) {
 				res.status(200).json(season)
@@ -68,6 +73,7 @@ const seasonController = {
 		try {
 			const season = await Season.findByPk(req.params.id, {
 				include: "episodes",
+				order: [["episodes", "episodeNumber", "ASC"]],
 			})
 			if (season) {
 				res.status(200).json(season)

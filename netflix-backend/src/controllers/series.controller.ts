@@ -5,7 +5,10 @@ const Series = db.models.Series
 const seriesController = {
 	async getAllSeries(req: Request, res: Response): Promise<void> {
 		try {
-			const series = await Series.findAll({ include: "seasons" })
+			const series = await Series.findAll({
+				include: "seasons",
+				order: ["seasons", "seasonNumber", "ASC"],
+			})
 			res.status(200).json(series)
 		} catch (error) {
 			console.error(error)
@@ -16,6 +19,7 @@ const seriesController = {
 		try {
 			const series = await Series.findByPk(req.params.id, {
 				include: "seasons",
+				order: [["seasons", "seasonNumber", "ASC"]],
 			})
 			if (series) {
 				res.status(200).json(series)
