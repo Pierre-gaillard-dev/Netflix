@@ -1,12 +1,12 @@
 import { Model, Sequelize, DataTypes, Optional } from "sequelize"
-import { SeriesAttributes } from "../types/express"
+import { SerieAttributes } from "../types/express"
 
 // Interface pour la création des séries
-interface SeriesCreationAttributes extends Optional<SeriesAttributes, "id"> {}
+interface SeriesCreationAttributes extends Optional<SerieAttributes, "id"> {}
 
 class Series
-	extends Model<SeriesAttributes, SeriesCreationAttributes>
-	implements SeriesAttributes
+	extends Model<SerieAttributes, SeriesCreationAttributes>
+	implements SerieAttributes
 {
 	public id!: number
 	public name!: string

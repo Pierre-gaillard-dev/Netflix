@@ -7,7 +7,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "npm run build && node dist/index.js",
 		"dev": "ts-node-dev --transpile-only --ignore-watch node_modules index.ts",
-		"scrap": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn utils/scrap.ts",
+		"scrap": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn src/utils/scrap.ts",
 		"build": "tsc"
 	},
 	"keywords": [],
