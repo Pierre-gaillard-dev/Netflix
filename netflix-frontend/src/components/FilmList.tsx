@@ -4,7 +4,7 @@ import { getAllFilms, getFilmByGenre } from "../api/films"
 
 import { FilmList_type } from "../types"
 
-import "./css/FilmList.css"
+import "./css/videoItemList.css"
 
 const FilmList: React.FC<{
 	showDetails?: boolean
@@ -24,13 +24,13 @@ const FilmList: React.FC<{
 		}
 	}, [genreId])
 	return (
-		<div className="filmListContainer">
+		<div className="video-item-list-container filmListContainer">
 			{title && <h2>{title}</h2>}
-			<div className={"filmList" + (wrap ? " wrap" : "")}>
+			<div className={"video-item-list filmList" + (wrap ? " wrap" : "")}>
 				{films.map((film) => (
 					<VideoItem
 						key={film.id}
-						film={film}
+						item={film}
 						type={"film"}
 						showDetails={showDetails}
 					/>

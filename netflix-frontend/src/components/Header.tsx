@@ -21,7 +21,7 @@ const Header: React.FC = () => {
 				</div>
 				<div className="links">
 					<Link to="/">Accueil</Link>
-					<a href="#">Séries</a>
+					<Link to="/series">Séries</Link>
 					<Link to="/films">Films</Link>
 					<a href="#">Nouveautés les plus regardées</a>
 					<a href="#">Ma liste</a>

@@ -1,7 +1,7 @@
 import { Router } from "express"
 import authMiddleware from "../middlewares/authMiddleWare"
-import seasonController from "../controllers/seasonController"
-import episodeController from "../controllers/episodeController"
+import seasonController from "../controllers/season.controller"
+import episodeController from "../controllers/episode.controller"
 
 const router: Router = Router({ mergeParams: true })
 

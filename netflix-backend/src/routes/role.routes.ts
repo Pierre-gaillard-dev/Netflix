@@ -1,6 +1,6 @@
 import { Router } from "express"
 import authMiddleware from "../middlewares/authMiddleWare"
-import roleController from "../controllers/roleController"
+import roleController from "../controllers/role.controller"
 
 const router: Router = Router()
 

@@ -10,6 +10,26 @@ export const getAllGenres = async () => {
 	}
 }
 
+export const getFilmGenres = async () => {
+	try {
+		const response = await apiClient.get("/genres/films")
+		return response.data
+	} catch (error) {
+		console.error("Error fetching film genres:", error)
+		throw error
+	}
+}
+
+export const getSeriesGenres = async () => {
+	try {
+		const response = await apiClient.get("/genres/series")
+		return response.data
+	} catch (error) {
+		console.error("Error fetching series genres:", error)
+		throw error
+	}
+}
+
 export const getGenreById = async (id: number) => {
 	try {
 		const response = await apiClient.get(`/genres/${id}`)

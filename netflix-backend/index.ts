@@ -11,6 +11,7 @@ dotenv.config()
 const allowedOrigins = [
 	"http://localhost:5173",
 	"http://192.168.1.19:5173",
+	"http://10.71.129.39:5173",
 	"https://netflix.pierre-gaillard.mds-vannes.yt",
 ]
 

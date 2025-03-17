@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom"
 // Components
 import FilmList from "../components/FilmList"
 // API
-import { getAllGenres } from "../api/genres"
+import { getFilmGenres } from "../api/genres"
 
 import { Genre_type } from "../types"
 
@@ -18,7 +18,7 @@ function App() {
 	const [genres, setGenres] = useState<Genre_type[]>([])
 
 	useEffect(() => {
-		getAllGenres().then((genres) => setGenres(genres))
+		getFilmGenres().then((genres) => setGenres(genres))
 	}, [])
 
 	return (

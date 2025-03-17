@@ -5,26 +5,27 @@ import { Navigate, useParams } from "react-router-dom"
 import { useAuth } from "../context/authContext"
 import { useHistory } from "../context/historyContext"
 // Components
+import SeasonList from "../components/SeasonList"
 import { ArrowLeft } from "../components/Icons"
 // API calls
-import { getFilmById } from "../api/films"
-// Types
-import { Film_type } from "../types"
+import { getSerieById } from "../api/series"
+// types
+import { Serie_type } from "../types"
 // Css
 import "./css/DetailPage.css"
 
-const FilmDetail = () => {
+const SerieDetail = () => {
 	const { user } = useAuth()
 	const { goBack } = useHistory()
 	if (!user) {
 		return <Navigate to="/login" />
 	}
 
-	const id = useParams<{ id: string }>().id
-	const [film, setFilm] = useState<Film_type | null>(null)
+	const { id } = useParams<{ id: string }>()
+	const [serie, setserie] = useState<Serie_type | null>(null)
 
 	useEffect(() => {
-		getFilmById(Number(id)).then((film) => setFilm(film))
+		getSerieById(Number(id)).then((serie) => setserie(serie))
 	}, [])
 
 	return (
@@ -34,15 +35,16 @@ const FilmDetail = () => {
 					<a href="#" onClick={goBack} className="back">
 						<ArrowLeft />
 					</a>
-					<img src={film?.image} alt="Film" />
+					<img src={serie?.image} alt="Film" />
 				</div>
 				<div className="description">
-					<h1>{film?.name}</h1>
-					<p>{film?.description}</p>
+					<h1>{serie?.name}</h1>
+					<p>{serie?.description}</p>
 				</div>
 			</div>
+			<SeasonList serieId={Number(id)} title="Seasons" showDetails wrap />
 		</div>
 	)
 }
 
-export default FilmDetail
+export default SerieDetail
