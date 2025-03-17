@@ -5,9 +5,15 @@ const Series = db.models.Series
 const seriesController = {
 	async getAllSeries(req: Request, res: Response): Promise<void> {
 		try {
+			const max = req.query.max ? parseInt(req.query.max as string) : 50
+			if (max < 1) {
+				res.status(400).json({ message: "Invalid value for max" })
+				return
+			}
 			const series = await Series.findAll({
 				include: "seasons",
 				order: ["seasons", "seasonNumber", "ASC"],
+				limit: max,
 			})
 			res.status(200).json(series)
 		} catch (error) {

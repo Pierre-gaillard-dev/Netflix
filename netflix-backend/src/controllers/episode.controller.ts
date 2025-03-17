@@ -7,7 +7,14 @@ const Episodes = db.models.Episodes
 const episodeController = {
 	async getAllEpisodes(req: Request, res: Response): Promise<void> {
 		try {
-			const episodes = await Episodes.findAll()
+			const max = req.query.max ? parseInt(req.query.max as string) : 50
+			if (max < 1) {
+				res.status(400).json({ message: "Invalid value for max" })
+				return
+			}
+			const episodes = await Episodes.findAll({
+				limit: max,
+			})
 			res.status(200).json(episodes)
 		} catch (error) {
 			console.error(error)
