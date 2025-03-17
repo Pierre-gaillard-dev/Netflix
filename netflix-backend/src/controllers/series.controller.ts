@@ -12,7 +12,7 @@ const seriesController = {
 			}
 			const series = await Series.findAll({
 				include: "seasons",
-				order: ["seasons", "seasonNumber", "ASC"],
+				order: [["seasons", "seasonNumber", "ASC"]],
 				limit: max,
 			})
 			res.status(200).json(series)

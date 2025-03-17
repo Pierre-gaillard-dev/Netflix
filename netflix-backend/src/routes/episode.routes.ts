@@ -3,9 +3,9 @@ import episodeController from "../controllers/episode.controller"
 
 const router: Router = Router({ mergeParams: true })
 
-router.get("/", episodeController.getEpisodeBySeasonIdAndEpisodeNumber)
+router.get("/", episodeController.getEpisodesBySerieIdAndseasonNumber)
 router.get(
-	"/:episode_number",
+	"/:episodeNumber",
 	episodeController.getEpisodeBySerieIdAndseasonNumberAndEpisodeNumber
 )
 

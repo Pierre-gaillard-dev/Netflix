@@ -2,9 +2,9 @@ import { useState, useEffect } from "react"
 import { Navigate } from "react-router-dom"
 import { useAuth } from "../context/authContext"
 // API calls
-import { getFilmGenres } from "../api/genres"
+import { getSeriesGenres } from "../api/genres"
 // Components
-import FilmList from "../components/FilmList"
+import SerieList from "../components/SerieList"
 import SelectMenu from "../components/SelectMenu"
 //types
 import { Genre_type } from "../types"
@@ -12,7 +12,7 @@ import { Genre_type } from "../types"
 import "./css/Films.css"
 import { useDevice } from "../context/deviceContext"
 
-const Films: React.FC = () => {
+const Series: React.FC = () => {
 	const { user } = useAuth()
 	const device = useDevice()
 	if (!user) {
@@ -23,14 +23,13 @@ const Films: React.FC = () => {
 	const [genre, setGenre] = useState<Genre_type | null>(null)
 
 	useEffect(() => {
-		getFilmGenres().then((genres) => setGenres(genres))
+		getSeriesGenres().then((genres) => setGenres(genres))
 	}, [])
-
 	return (
 		<div className={"films-page" + (device.isMobile ? " mobile" : "")}>
 			<div className="hero">
 				<a onClick={() => setGenre(null)}>
-					<h1>Films</h1>
+					<h1>Séries</h1>
 				</a>
 				<SelectMenu
 					title="Genre"
@@ -40,7 +39,7 @@ const Films: React.FC = () => {
 					gridColumns={4}
 				/>
 			</div>
-			<FilmList
+			<SerieList
 				genreId={genre?.id}
 				wrap
 				max={300}
@@ -50,4 +49,4 @@ const Films: React.FC = () => {
 	)
 }
 
-export default Films
+export default Series

@@ -10,6 +10,10 @@ import AuthProvider from "./context/authContext.tsx"
 import Home from "./pages/Home.tsx"
 import FilmDetail from "./pages/FilmDetail.tsx"
 import Films from "./pages/Films.tsx"
+import Series from "./pages/Series.tsx"
+import SerieDetail from "./pages/SerieDetail.tsx"
+import SeasonDetail from "./pages/SeasonDetail.tsx"
+import EpisodeDetail from "./pages/EpisodeDetail.tsx"
 import Login from "./pages/Login.tsx"
 import Register from "./pages/Register.tsx"
 //CSS
@@ -28,6 +32,19 @@ createRoot(document.getElementById("root")!).render(
 							<Route path="/" element={<Home />} />
 							<Route path="/films" element={<Films />} />
 							<Route path="/films/:id" element={<FilmDetail />} />
+							<Route path="/series" element={<Series />} />
+							<Route
+								path="/series/:id"
+								element={<SerieDetail />}
+							/>
+							<Route
+								path="/series/:id/seasons/:season"
+								element={<SeasonDetail />}
+							/>
+							<Route
+								path="/series/:id/seasons/:season/episodes/:episode"
+								element={<EpisodeDetail />}
+							/>
 							<Route path="*" element={<h1>Page not found</h1>} />
 							<Route path="/login" element={<Login />} />
 							<Route path="/register" element={<Register />} />

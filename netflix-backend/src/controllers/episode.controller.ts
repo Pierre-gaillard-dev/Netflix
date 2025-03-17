@@ -31,6 +31,7 @@ const episodeController = {
 					message: `Season not found`,
 					detail: `The season with the id ${season_id} does not exist`,
 				})
+				return
 			}
 
 			const episodes = await Episodes.findAll({
@@ -48,7 +49,7 @@ const episodeController = {
 	): Promise<void> {
 		try {
 			// Check if the serie exists
-			const serie_id = req.params.id
+			const serie_id = req.params.serie_id
 			const serie = await Series.findByPk(serie_id)
 			if (!serie) {
 				res.status(404).json({
@@ -71,6 +72,7 @@ const episodeController = {
 			}
 			const episodes = await Episodes.findAll({
 				where: { season_id: season.id },
+				order: [["episodeNumber", "ASC"]],
 			})
 			res.status(200).json(episodes)
 		} catch (error) {
@@ -126,7 +128,7 @@ const episodeController = {
 	): Promise<void> {
 		try {
 			// Check if the serie exists
-			const serie_id = req.params.id
+			const serie_id = req.params.serie_id
 			const serie = await Series.findByPk(serie_id)
 			if (!serie) {
 				res.status(404).json({
