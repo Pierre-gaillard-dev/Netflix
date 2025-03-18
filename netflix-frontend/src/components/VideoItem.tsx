@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react"
-import { Episode_type, Film_type, Season_type, Serie_type } from "../types"
-import testImage from "../utils/testImage"
-
-import "./css/VideoItem.css"
+// React
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
+// Context
 import { useDevice } from "../context/deviceContext"
+// Components
+import BetterImg from "./BetterImg"
+// types
+import { Episode_type, Film_type, Season_type, Serie_type } from "../types"
+// CSS
+import "./css/VideoItem.css"
 
 const VideoItem: React.FC<{
 	item: Film_type | Serie_type | Season_type | Episode_type
@@ -12,7 +16,6 @@ const VideoItem: React.FC<{
 	showDetails?: boolean
 }> = ({ item, type, showDetails = false }) => {
 	const device = useDevice()
-	const [isValidImage, setIsValidImage] = useState<boolean>(false)
 	const [selected, setSelected] = useState<boolean>(false)
 	let link = ""
 	if ("seasonNumber" in item) {
@@ -26,10 +29,6 @@ const VideoItem: React.FC<{
 		link = getLink(type, item.id)
 	}
 
-	useEffect(() => {
-		testImage(item.image).then((isValid) => setIsValidImage(isValid))
-	}, [])
-
 	return (
 		<Link
 			to={link}
@@ -42,13 +41,9 @@ const VideoItem: React.FC<{
 			onMouseLeave={() => setSelected(false)}
 		>
 			<div className="image_container">
-				{isValidImage ? (
-					<img src={item.image} alt="Image" />
-				) : (
-					<p>Image not found</p>
-				)}
+				<BetterImg src={item.image} alt={item.name} />
 				{!showDetails && <p className="videoName">{item.name}</p>}
-				{"duration" in item && item.duration && (
+				{"duration" in item && item.duration > 0 && (
 					<p className="duration">{`${Math.floor(
 						item.duration / 60
 					)}h ${item.duration % 60}min`}</p>

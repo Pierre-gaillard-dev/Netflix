@@ -5,6 +5,7 @@ import { Navigate, useParams } from "react-router-dom"
 import { useAuth } from "../context/authContext"
 import { useHistory } from "../context/historyContext"
 // Components
+import BetterImg from "../components/BetterImg"
 import { ArrowLeft } from "../components/Icons"
 // API calls
 import { getFilmById } from "../api/films"
@@ -34,7 +35,7 @@ const FilmDetail = () => {
 					<a href="#" onClick={goBack} className="back">
 						<ArrowLeft />
 					</a>
-					<img src={film?.image} alt="Film" />
+					<BetterImg src={film?.image} alt="Image de couverture" />
 				</div>
 				<div className="description">
 					<h1>{film?.name}</h1>
