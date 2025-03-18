@@ -9,6 +9,7 @@ import { getEpisodeByNumber } from "../api/series"
 // types
 import { Episode_type } from "../types"
 // components
+import BetterImg from "../components/BetterImg"
 import { ArrowLeft } from "../components/Icons"
 // Css
 import "./css/DetailPage.css"
@@ -41,7 +42,7 @@ const Seasondetail = () => {
 					<a href="#" onClick={goBack} className="back">
 						<ArrowLeft />
 					</a>
-					<img src={episode?.image} alt="Film" />
+					<BetterImg src={episode?.image} alt="Image de couverture" />
 				</div>
 				<div className="description">
 					<h1>{episode?.name}</h1>

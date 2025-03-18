@@ -13,6 +13,8 @@ import { getSerieById } from "../api/series"
 import { Serie_type } from "../types"
 // Css
 import "./css/DetailPage.css"
+import "./css/SerieDetail.css"
+import BetterImg from "../components/BetterImg"
 
 const SerieDetail = () => {
 	const { user } = useAuth()
@@ -29,13 +31,13 @@ const SerieDetail = () => {
 	}, [])
 
 	return (
-		<div className="detail-page">
+		<div className="detail-page" id="serie-detail">
 			<div className="hero">
 				<div className="imageContainer">
 					<a href="#" onClick={goBack} className="back">
 						<ArrowLeft />
 					</a>
-					<img src={serie?.image} alt="Film" />
+					<BetterImg src={serie?.image} alt="Image de couverture" />
 				</div>
 				<div className="description">
 					<h1>{serie?.name}</h1>

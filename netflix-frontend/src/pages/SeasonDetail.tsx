@@ -6,6 +6,7 @@ import { useAuth } from "../context/authContext"
 import { useHistory } from "../context/historyContext"
 // Components
 import EpisodeList from "../components/EpisodeList"
+import BetterImg from "../components/BetterImg"
 import { ArrowLeft } from "../components/Icons"
 // API calls
 import { getSeasonByNumber } from "../api/series"
@@ -13,6 +14,7 @@ import { getSeasonByNumber } from "../api/series"
 import { Season_type } from "../types"
 // Css
 import "./css/DetailPage.css"
+import "./css/SeasonDetail.css"
 
 const Seasondetail = () => {
 	const { user } = useAuth()
@@ -33,13 +35,13 @@ const Seasondetail = () => {
 	}, [])
 
 	return (
-		<div className="detail-page">
+		<div className="detail-page" id="season-detail">
 			<div className="hero">
 				<div className="imageContainer">
 					<a href="#" onClick={goBack} className="back">
 						<ArrowLeft />
 					</a>
-					<img src={season?.image} alt="Film" />
+					<BetterImg src={season?.image} alt="Image de couverture" />
 				</div>
 				<div className="description">
 					<h1>{season?.name}</h1>

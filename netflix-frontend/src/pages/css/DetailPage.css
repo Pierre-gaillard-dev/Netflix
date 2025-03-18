@@ -11,6 +11,11 @@
 		flex: 1;
 	}
 
+	.hero > .imageContainer {
+		height: 300px;
+		object-fit: cover;
+	}
+
 	.hero svg {
 		position: absolute;
 		top: 0;

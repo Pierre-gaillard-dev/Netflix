@@ -1,0 +1,7 @@
+.detail-page#season-detail {
+	.hero .imageContainer {
+		flex: unset;
+		width: 300px;
+		height: 450px;
+	}
+}

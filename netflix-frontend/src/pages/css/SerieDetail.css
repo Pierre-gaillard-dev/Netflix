@@ -1,0 +1,5 @@
+.detail-page#serie-detail {
+	.videoItem > .image_container {
+		aspect-ratio: 2/3;
+	}
+}
