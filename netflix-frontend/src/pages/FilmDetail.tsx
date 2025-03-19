@@ -15,8 +15,11 @@ import { Film_type } from "../types"
 import "./css/DetailPage.css"
 
 const FilmDetail = () => {
-	const { user } = useAuth()
+	const { user, loading } = useAuth()
 	const { goBack } = useHistory()
+	if (loading) {
+		return <div>Loading...</div>
+	}
 	if (!user) {
 		return <Navigate to="/login" />
 	}

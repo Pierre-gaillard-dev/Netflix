@@ -13,8 +13,12 @@ import "./css/Films.css"
 import { useDevice } from "../context/deviceContext"
 
 const Series: React.FC = () => {
-	const { user } = useAuth()
+	const { user, loading } = useAuth()
 	const device = useDevice()
+
+	if (loading) {
+		return <div>Loading...</div>
+	}
 	if (!user) {
 		return <Navigate to="/login" />
 	}

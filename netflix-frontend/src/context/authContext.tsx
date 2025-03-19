@@ -10,6 +10,7 @@ interface User {
 
 interface AuthContextType {
 	user: User | null
+	loading: boolean
 	login: (username: string, password: string) => Promise<void>
 	logout: () => void
 }
@@ -18,9 +19,16 @@ const AuthContext = createContext<AuthContextType | null>(null)
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 	const [user, setUser] = useState<User | null>(null)
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
-		checkAuth()
+		const token = localStorage.getItem("token")
+		if (token) {
+			apiClient.defaults.headers.common["Authorization"] = token
+			checkAuth()
+		} else {
+			setLoading(false)
+		}
 	}, [])
 
 	const checkAuth = async () => {
@@ -32,6 +40,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 		try {
 			const response = await apiClient.get("/auth/me")
 			setUser(response.data)
+			setLoading(false)
 		} catch (error) {
 			setUser(null)
 		}
@@ -47,6 +56,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 				id: response.data.user.id,
 				username: response.data.user.name,
 			})
+			localStorage.setItem("token", response.data.token)
 			await checkAuth()
 		} catch (error) {
 			console.error(error)
@@ -56,10 +66,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 	const logout = async () => {
 		await apiClient.post("/auth/logout")
 		setUser(null)
+		localStorage.removeItem("token")
 	}
 
 	return (
-		<AuthContext.Provider value={{ user, login, logout }}>
+		<AuthContext.Provider value={{ user, login, logout, loading }}>
 			{children}
 		</AuthContext.Provider>
 	)

@@ -17,8 +17,11 @@ import "./css/SerieDetail.css"
 import BetterImg from "../components/BetterImg"
 
 const SerieDetail = () => {
-	const { user } = useAuth()
+	const { user, loading } = useAuth()
 	const { goBack } = useHistory()
+	if (loading) {
+		return <div>Loading...</div>
+	}
 	if (!user) {
 		return <Navigate to="/login" />
 	}

@@ -15,8 +15,12 @@ import { ArrowLeft } from "../components/Icons"
 import "./css/DetailPage.css"
 
 const Seasondetail = () => {
-	const { user } = useAuth()
+	const { user, loading } = useAuth()
 	const { goBack } = useHistory()
+
+	if (loading) {
+		return <div>Loading...</div>
+	}
 	if (!user) {
 		return <Navigate to="/login" />
 	}

@@ -8,6 +8,8 @@ import cookieParser from "cookie-parser"
 
 dotenv.config()
 
+console.log("ceci est une erreur")
+
 const allowedOrigins = [
 	"http://localhost:5173",
 	"http://192.168.1.19:5173",

@@ -10,7 +10,10 @@ import { getFilmGenres } from "../api/genres"
 import { Genre_type } from "../types"
 
 function App() {
-	const { user } = useAuth()
+	const { user, loading } = useAuth()
+	if (loading) {
+		return <div>Loading...</div>
+	}
 	if (!user) {
 		return <Navigate to="/login" />
 	}
