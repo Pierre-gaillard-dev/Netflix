@@ -8,6 +8,7 @@ import seasonRoutes from "./root.season.routes"
 import episodesRoutes from "./root.episode.routes"
 import genreRoutes from "./genre.routes"
 import scrapRoutes from "./scrap.routes"
+import searchRoutes from "./search.routes"
 
 const router: Router = Router({ mergeParams: true })
 
@@ -24,5 +25,6 @@ router.use("/seasons", seasonRoutes)
 router.use("/episodes", episodesRoutes)
 router.use("/genres", genreRoutes)
 router.use("/scrap", scrapRoutes)
+router.use("/search", searchRoutes)
 
 export default router
