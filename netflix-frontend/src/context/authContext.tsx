@@ -43,6 +43,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 			setLoading(false)
 		} catch (error) {
 			setUser(null)
+			setLoading(false)
 		}
 	}
 

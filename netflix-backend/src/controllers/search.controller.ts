@@ -10,7 +10,6 @@ const Episode = db.models.Episodes
 const SearchController = {
 	async search(req: Request, res: Response) {
 		const { name } = req.query
-		console.log(name)
 		if (!name) {
 			res.status(400).json({ error: "Query is required" })
 			return
