@@ -11,10 +11,6 @@ header.header {
 	color: var(--netflix-white);
 }
 
-header.header div {
-	height: inherit;
-}
-
 header.header .header_left,
 header.header .header_right {
 	display: flex;
@@ -23,6 +19,7 @@ header.header .header_right {
 	justify-content: flex-start;
 	align-items: center;
 	gap: 20px;
+	height: 100%;
 }
 
 header.header .header_left > div,
@@ -33,6 +30,7 @@ header.header .header_right > div {
 	justify-content: flex-end;
 	align-items: center;
 	gap: 20px;
+	height: 100%;
 }
 
 header.header .logo {
