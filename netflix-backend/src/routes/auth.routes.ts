@@ -8,5 +8,6 @@ router.get("/me", authMiddleware, authController.getMe)
 router.post("/register", authController.register)
 router.post("/login", authController.login)
 router.post("/logout", authController.logout)
+router.put("/password", authMiddleware, authController.updatePassword)
 
 export default router

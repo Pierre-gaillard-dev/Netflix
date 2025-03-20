@@ -1,0 +1,55 @@
+.page.profile {
+	max-width: 800px;
+	margin: 0 auto 60px auto;
+
+	h1 {
+		text-align: center;
+		margin: 1em 0;
+	}
+
+	.split > div:last-child {
+		flex: 2;
+	}
+
+	.split > .imageContainer {
+		max-width: 300px;
+		word-wrap: 100%;
+		border-radius: 100%;
+		aspect-ratio: 1/1;
+	}
+
+	.split > .info {
+		width: 300px;
+	}
+
+	.split .info h2 {
+		font-size: 2em;
+		margin-bottom: 1em;
+	}
+
+	.split .info p {
+		font-size: 1.2em;
+		margin-bottom: 1em;
+	}
+
+	.edit button {
+		background-color: var(--netflix-gray);
+		color: var(--netflix-white);
+		width: 60%;
+		padding: 10px;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+
+	.edit.change-password {
+		margin-top: 20px;
+		gap: 20px;
+	}
+
+	.delete {
+		background-color: var(--netflix-red);
+		margin-top: 30px;
+		padding: 10px;
+	}
+}

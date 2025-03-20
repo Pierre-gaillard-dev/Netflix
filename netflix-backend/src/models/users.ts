@@ -94,5 +94,11 @@ export default (sequelize: Sequelize) => {
 		user.password = await bcrypt.hash(user.password, 10)
 	})
 
+	Users.beforeUpdate(async (user) => {
+		if (user.changed("password")) {
+			user.password = await bcrypt.hash(user.password, 10)
+		}
+	})
+
 	return Users
 }

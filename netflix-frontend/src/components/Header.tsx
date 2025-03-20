@@ -3,7 +3,8 @@ import React from "react"
 import { Link } from "react-router-dom"
 import { useAuth } from "../context/authContext"
 // components
-import { Bell, Search, ArrowDown } from "./Icons"
+import SearchBar from "./SearchBar"
+import { Bell, ArrowDown } from "./Icons"
 // css
 import "./css/Header.css"
 
@@ -29,8 +30,8 @@ const Header: React.FC = () => {
 				</div>
 			</div>
 			<div className="header_right">
-				<div className="search">
-					<Search />
+				<div className="header-searchbar">
+					<SearchBar placeholder="Chercher..." foldOnEmptySearch />
 				</div>
 				<div className="links">
 					<a href="#">Jeunesse</a>
@@ -41,11 +42,12 @@ const Header: React.FC = () => {
 				{user && (
 					<div className="links profile">
 						<a onClick={() => setUserPopup(!userPopup)}>
-							{user.username}
+							{user.name}
 							<ArrowDown />
 							{userPopup && (
 								<div className="popup">
 									<div className="links">
+										<Link to="/profile">Profil</Link>
 										<a onClick={logout}>Déconnecter</a>
 									</div>
 								</div>

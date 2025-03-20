@@ -69,6 +69,10 @@ p {
 	text-decoration: underline;
 }
 
+.center {
+	text-align: center;
+}
+
 .imageContainer {
 	position: relative;
 	width: 100%;
@@ -76,8 +80,24 @@ p {
 	overflow: hidden;
 }
 
+.split {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+}
+
+.split > * {
+	flex: 1;
+}
+
 @media screen and (max-width: 1000px) {
 	#root {
 		font-size: 10px;
+	}
+
+	.split {
+		flex-direction: column;
 	}
 }
