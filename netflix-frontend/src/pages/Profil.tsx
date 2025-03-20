@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom"
 // context
 import { useAuth } from "../context/authContext"
 // components
-import UpdateUserOverlay from "../components/updateUser.overlay"
+import UpdateUserOverlay from "../components/UpdateUser.overlay"
 import PasswordUpdateOverlay from "../components/PasswordUpdate.overlay"
 import DeleteAccountOverlay from "../components/DeleteAccount.overlay"
 // Css

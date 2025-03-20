@@ -4,7 +4,7 @@ import { getAllFilms, getFilmByGenre } from "../api/films"
 
 import { FilmList_type } from "../types"
 
-import "./css/videoItemList.css"
+import "./css/VideoItemList.css"
 
 const FilmList: React.FC<{
 	showDetails?: boolean
