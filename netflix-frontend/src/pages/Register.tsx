@@ -57,9 +57,9 @@ const Register: React.FC = () => {
 			alert("Les mots de passe ne correspondent pas")
 			return
 		}
-		const res = await axios
+		await axios
 			.get(`http://localhost:3000/api/users/email/${mail}`)
-			.then((res) => {
+			.then(() => {
 				alert("adresse mail déjà utilisée")
 				return
 			})
