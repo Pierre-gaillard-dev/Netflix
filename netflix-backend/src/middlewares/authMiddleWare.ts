@@ -22,11 +22,16 @@ const authMiddleware = (
 			token,
 			process.env.JWT_SECRET as string
 		) as JwtPayload
-		if (typeof decoded !== "object" || !decoded.id || !decoded.username) {
+		if (typeof decoded !== "object" || !decoded.id || !decoded.name) {
 			res.status(403).json({ message: "Invalid token" })
 			return
 		}
-		req.user = { id: decoded.id, username: decoded.username }
+		req.user = {
+			id: decoded.id,
+			name: decoded.name,
+			email: decoded.email,
+			birthDate: decoded.birthDate,
+		}
 		console.log(decoded, req.user)
 		next()
 	} catch (error) {

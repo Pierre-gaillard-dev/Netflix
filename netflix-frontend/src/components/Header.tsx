@@ -42,11 +42,12 @@ const Header: React.FC = () => {
 				{user && (
 					<div className="links profile">
 						<a onClick={() => setUserPopup(!userPopup)}>
-							{user.username}
+							{user.name}
 							<ArrowDown />
 							{userPopup && (
 								<div className="popup">
 									<div className="links">
+										<Link to="/profile">Profil</Link>
 										<a onClick={logout}>Déconnecter</a>
 									</div>
 								</div>

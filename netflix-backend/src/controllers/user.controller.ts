@@ -1,6 +1,7 @@
 import { Request, Response } from "express"
 import db from "../models"
 const User = db.models.Users
+import Jwt from "jsonwebtoken"
 
 const userController = {
 	async getAllUsers(req: Request, res: Response): Promise<void> {
@@ -27,9 +28,14 @@ const userController = {
 	},
 	async UpdateUser(req: Request, res: Response): Promise<void> {
 		try {
+			if (req.user!.id !== parseInt(req.params.id)) {
+				res.status(403).json({ message: "Forbidden" })
+				return
+			}
 			const user = await User.findByPk(req.params.id)
 			if (user) {
-				await user.update(req.body)
+				const { password, ...data } = req.body
+				await user.update(data)
 				res.status(200).json(user)
 			} else {
 				res.status(404).json({ message: "User not found" })
@@ -41,6 +47,10 @@ const userController = {
 	},
 	async DeleteUser(req: Request, res: Response): Promise<void> {
 		try {
+			if (req.user!.id !== parseInt(req.params.id)) {
+				res.status(403).json({ message: "Forbidden" })
+				return
+			}
 			const user = await User.findByPk(req.params.id)
 			if (user) {
 				await user.destroy()

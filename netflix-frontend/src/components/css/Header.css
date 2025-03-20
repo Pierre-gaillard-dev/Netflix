@@ -75,7 +75,13 @@ header.header .profile .popup {
 	padding: 10px;
 	border: 1px solid var(--netflix-white);
 	z-index: 1;
-	height: 100%;
 	width: 100%;
+	max-height: unset;
 	cursor: unset;
+	display: inline-block;
+}
+
+header.header .profile .popup .links {
+	flex-direction: column;
+	gap: 10px;
 }

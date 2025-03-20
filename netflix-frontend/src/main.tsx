@@ -14,6 +14,7 @@ import Series from "./pages/Series.tsx"
 import SerieDetail from "./pages/SerieDetail.tsx"
 import SeasonDetail from "./pages/SeasonDetail.tsx"
 import EpisodeDetail from "./pages/EpisodeDetail.tsx"
+import Profile from "./pages/Profil.tsx"
 import Login from "./pages/Login.tsx"
 import Register from "./pages/Register.tsx"
 //CSS
@@ -45,6 +46,7 @@ createRoot(document.getElementById("root")!).render(
 								path="/series/:id/seasons/:season/episodes/:episode"
 								element={<EpisodeDetail />}
 							/>
+							<Route path="/profile" element={<Profile />} />
 							<Route path="*" element={<h1>Page not found</h1>} />
 							<Route path="/login" element={<Login />} />
 							<Route path="/register" element={<Register />} />

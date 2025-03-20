@@ -2,14 +2,18 @@ import { Request, Response } from "express"
 import Jwt from "jsonwebtoken"
 import dotenv from "dotenv"
 import db from "../models"
-import { get } from "http"
 const User = db.models.Users as any
 
 dotenv.config()
 
 const generateToken = (user: any) => {
 	return Jwt.sign(
-		{ id: user.id, username: user.name },
+		{
+			id: user.id,
+			name: user.name,
+			email: user.email,
+			birthDate: user.birthDate,
+		},
 		process.env.JWT_SECRET!,
 		{
 			expiresIn: "2h",
@@ -109,6 +113,30 @@ const authController = {
 			return
 		}
 		res.json(req.user)
+	},
+
+	async updatePassword(req: Request, res: Response): Promise<void> {
+		try {
+			const { password, newPassword } = req.body
+			if (!password || !newPassword) {
+				res.status(400).json({
+					message: "Password and new password are required",
+				})
+				return
+			}
+
+			const user = await User.findByPk(req.user!.id)
+			if (!user || !(await user.checkPassword(password))) {
+				res.status(404).json({ message: "Invalid password" })
+				return
+			}
+
+			await user.update({ password: newPassword })
+			res.status(200).json({ message: "Password updated successfully" })
+		} catch (error) {
+			console.error(error)
+			res.status(500).json({ message: "Error updating password" })
+		}
 	},
 }
 
