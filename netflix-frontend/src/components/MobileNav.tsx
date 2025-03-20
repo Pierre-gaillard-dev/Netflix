@@ -5,7 +5,7 @@ import { useHistory } from "../context/historyContext"
 // Components
 import { Film, Home, Profile, Serie } from "./Icons"
 // CSS
-import "./css/mobileNav.css"
+import "./css/MobileNav.css"
 
 const MobileNav: React.FC = () => {
 	const { currentPage } = useHistory()

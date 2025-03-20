@@ -4,7 +4,7 @@ import { getSerieSeasons } from "../api/series"
 
 import { SeasonList_type } from "../types"
 
-import "./css/videoItemList.css"
+import "./css/VideoItemList.css"
 
 const FilmList: React.FC<{
 	showDetails?: boolean
